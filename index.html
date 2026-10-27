@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HablaFluido Academy - Comprehensive Spanish Curriculum with Visuals & Extra Revision</title>
+    <title>HablaFluido Academy - Comprehensive Spanish Curriculum with Visuals</title>
     <style>
         :root {
             --primary: #1e293b;
@@ -61,10 +61,6 @@
         .level-info h3 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
         .level-info p { margin: 0; font-size: 0.85rem; }
         
-        .btn-group {
-            display: flex;
-            gap: 8px;
-        }
         .btn {
             background-color: var(--accent);
             color: white;
@@ -79,26 +75,19 @@
             transition: background 0.2s;
         }
         .btn:hover { background-color: #1d4ed8; }
-        .btn-secondary {
-            background-color: #475569;
-        }
-        .btn-secondary:hover {
-            background-color: #334155;
-        }
         .level-card.locked .btn {
             background-color: var(--locked);
             cursor: not-allowed;
         }
 
         /* Lesson / Curriculum View */
-        #lesson-view, #revision-hub-view {
+        #lesson-view {
             display: none;
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             width: 100%;
-            box-sizing: border-box;
         }
         .curriculum-chapter {
             background: #f8fafc;
@@ -161,7 +150,7 @@
             font-size: 0.85rem;
         }
         .bar-label {
-            width: 130px;
+            width: 140px;
             text-align: right;
             font-weight: 600;
         }
@@ -185,33 +174,19 @@
             font-weight: bold;
         }
 
-        /* Extra Revision Hub & Cards */
-        .revision-card {
-            background: #f8fafc;
-            border: 1px solid #cbd5e1;
-            border-left: 5px solid #16a34a;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .revision-card h3 { color: #166534; margin-top: 0; }
-        .revision-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        @media(max-width: 600px) {
-            .revision-grid { grid-template-columns: 1fr; }
-        }
-        .rev-box {
+        .curriculum-chapter table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
             background: white;
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid #e2e8f0;
+        }
+        .curriculum-chapter th, .curriculum-chapter td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 12px;
+            text-align: left;
             font-size: 0.9rem;
         }
-        .rev-box h4 { margin: 0 0 6px 0; color: var(--primary); font-size: 0.95rem; }
+        .curriculum-chapter th { background: #e2e8f0; }
 
         .video-box {
             background: #eff6ff;
@@ -308,19 +283,6 @@
             min-height: 24px;
         }
 
-        .hub-banner {
-            background: linear-gradient(135deg, #2563eb, #1e293b);
-            color: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .hub-banner h2 { margin: 0 0 5px 0; }
-        .hub-banner p { margin: 0; color: #cbd5e1; font-size: 0.9rem; }
-
         .back-btn { background: #64748b; margin-bottom: 15px; }
         .back-btn:hover { background: #475569; }
     </style>
@@ -329,21 +291,13 @@
 
     <header>
         <h1>HablaFluido Academy</h1>
-        <p>In-Depth Textbook Chapters, Visual Diagrams, Assessments, and Dedicated Extra Revision Hub.</p>
+        <p>In-Depth Textbook Chapters with Visual Diagrams, Video Guides, and 50-Question Assessments.</p>
     </header>
 
     <div class="main-container">
 
         <!-- DASHBOARD VIEW -->
         <div id="dashboard">
-            <div class="hub-banner">
-                <div>
-                    <h2>🚀 Master Study Hub</h2>
-                    <p>Access high-yield extra revision notes, memory hacks, and pro facts for all 10 curriculum topics.</p>
-                </div>
-                <button class="btn" style="background-color: #16a34a;" onclick="openRevisionHub()">Open Extra Revision Hub</button>
-            </div>
-
             <div class="level-grid" id="level-container"></div>
 
             <!-- Mini Dictionary -->
@@ -356,19 +310,6 @@
                 </div>
                 <div id="dict-result"></div>
             </div>
-        </div>
-
-        <!-- EXTRA REVISION & FACTS HUB VIEW -->
-        <div id="revision-hub-view">
-            <button class="btn back-btn" onclick="returnToDashboardFromHub()">← Back to Dashboard</button>
-            <div class="hub-banner" style="background: linear-gradient(135deg, #16a34a, #1e293b);">
-                <div>
-                    <h2>📚 Comprehensive Extra Revision & Pro Facts Hub</h2>
-                    <p>Quick-reference review cards, grammar shortcuts, common traps to avoid, and cultural notes for all 10 levels.</p>
-                </div>
-            </div>
-            <div id="revision-cards-container"></div>
-            <button class="btn back-btn" onclick="returnToDashboardFromHub()">← Back to Dashboard</button>
         </div>
 
         <!-- LESSON / CURRICULUM VIEW -->
@@ -413,12 +354,6 @@
                 id: 1,
                 title: "Level 1: Spanish 1 - Foundations, Greetings & Phonetics",
                 desc: "Complete guide to Spanish phonetics, vowel consistency, greetings, courtesy, numbers 1-100, and classroom nouns.",
-                revisionFacts: {
-                    shortcut: "Vowels A-E-I-O-U never change sound. Memorize the phrase 'Aha, pet, machine, note, boot' to recall the 5 invariant sounds instantly.",
-                    trap: "Do not pronounce the letter 'H' in words like 'hola' or 'hasta'. It is 100% silent.",
-                    culture: "In Spain and Latin America, greeting elders or acquaintances often involves a physical touch or cheek kiss (dos besos), while formal business settings rely on firm handshakes.",
-                    fact: "Spanish is spoken natively by over 480 million people across 21 countries, making it the second most spoken native language globally."
-                },
                 chapter: `
                     <h3>Chapter 1: Deep Dive into Spanish Phonetics and Basic Greetings</h3>
                     <p>Spanish is a phonetic language spoken by over 500 million people worldwide. Unlike English, Spanish vowels are <strong>strictly invariant</strong>. Each of the five vowels maintains one crisp, short sound:</p>
@@ -514,12 +449,6 @@
                 id: 2,
                 title: "Level 2: Spanish 1 - Subject Pronouns & Present Tense Verbs",
                 desc: "In-depth guide to personal subject pronouns and present tense -ar, -er, -ir verb mechanics.",
-                revisionFacts: {
-                    shortcut: "Remember the present tense ending pattern: Yo always takes **-o**. -AR verbs use **-as/-a**, -ER verbs use **-es/-e**, and -IR verbs use **-es/-e** (except nosotros/vosotros).",
-                    trap: "Don't confuse *tú* (you) with *tu* (your). The accent mark changes the meaning completely!",
-                    culture: "In Latin America, 'ustedes' is used for all plural 'you' (both friends and strangers), whereas Spain uses 'vosotros' for casual friends and 'ustedes' for formal groups.",
-                    fact: "Spanish verbs are categorized into three families based on their infinitive endings: -ar, -er, and -ir."
-                },
                 chapter: `
                     <h3>Chapter 2: Pronouns and Regular Present Tense Conjugation</h3>
                     <p>In Spanish, verbs are conjugated by dropping the infinitive ending (<strong>-ar</strong>, <strong>-er</strong>, or <strong>-ir</strong>) and attaching specific endings that reveal who performs the action.</p>
@@ -616,12 +545,6 @@
                 id: 3,
                 title: "Level 3: Spanish 2 - Ser vs. Estar & Adjective Agreement",
                 desc: "Comprehensive breakdown of DOCTOR vs PLACE acronyms for Ser/Estar and adjective agreement.",
-                revisionFacts: {
-                    shortcut: "Remember **DOCTOR** (Description, Occupation, Characteristic, Time, Origin, Relation) for **Ser**, and **PLACE** (Position, Location, Action -ing, Condition, Emotion) for **Estar**.",
-                    trap: "Don't confuse 'estoy aburrido' (I am bored right now) with 'soy aburrido' (I am a boring person). Ser and Estar completely alter adjective meanings!",
-                    culture: "Geographic locations (like cities and countries) always use *estar* even though they are permanently fixed in one place.",
-                    fact: "Adjectives in Spanish almost always follow the noun they modify (e.g., *el coche rojo*), unlike English where adjectives precede nouns."
-                },
                 chapter: `
                     <h3>Chapter 3: Mastering Ser vs. Estar and Adjectives</h3>
                     <p>Spanish utilizes two separate verbs for English 'to be': <strong>Ser</strong> and <strong>Estar</strong>. Use <strong>Ser</strong> for permanent traits (DOCTOR) and <strong>Estar</strong> for temporary states and locations (PLACE).</p>
@@ -631,6 +554,22 @@
                         <div class="flow-row">
                             <div class="flow-node" style="background:#fef2f2; color:#991b1b; border-color:#fecaca;">SER = DOCTOR (Origin, Identity, Traits)</div>
                             <div class="flow-node" style="background:#f0fdf4; color:#166534; border-color:#bbf7d0;">ESTAR = PLACE (Position, Location, Emotion)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Adjective Gender & Plural Ending Matching Rules</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Masculine Singular</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 25%;">Ends in -O / Uniform</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Feminine Singular</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 50%; background: #2563eb;">Ends in -A / Uniform</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Plural Forms</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 75%; background: #16a34a;">Add -S / -ES</div></div>
                         </div>
                     </div>
                 `,
@@ -696,12 +635,6 @@
                 id: 4,
                 title: "Level 4: Spanish 2 - Stem-Changing Verbs & Object Pronouns",
                 desc: "Guide to boot verbs, Gustar-like structures, and direct/indirect object pronoun placement.",
-                revisionFacts: {
-                    shortcut: "In boot verbs (e->ie, o->ue, e->i), **nosotros** and **vosotros** never change their stem vowels. They stay inside the 'boots' safely!",
-                    trap: "With *gustar*, the noun that is liked determines whether you use *gusta* (singular) or *gustan* (plural), NOT the person doing the liking.",
-                    culture: "Spanish speakers frequently drop subject pronouns ('yo', 'tú') because object pronouns ('lo', 'la', 'le') and verb endings carry all necessary information.",
-                    fact: "Indirect object pronouns (*le, les*) change to **se** when placed directly before direct object pronouns (*lo, la*) to avoid awkward double-L sounds ('le lo' becomes 'se lo')."
-                },
                 chapter: `
                     <h3>Chapter 4: Stem-Changers, Direct & Indirect Object Pronouns</h3>
                     <p>Certain verbs undergo a vowel change in their stem during present tense conjugation (boot verbs). Object pronouns replace nouns to streamline sentences.</p>
@@ -717,6 +650,18 @@
                             <div class="flow-node" style="background:#f1f5f9; color:#64748b;">Nosotros (NO change)</div>
                             <div class="flow-node" style="background:#f1f5f9; color:#64748b;">Vosotros (NO change)</div>
                             <div class="flow-node" style="background:#fee2e2; color:#991b1b;">Ellos (Changes)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Object Pronoun Placement Hierarchy</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Indirect Pronoun</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 40%;">Position 1 (Before Direct)</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Direct Pronoun</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 70%; background: #2563eb;">Position 2 (After Indirect)</div></div>
                         </div>
                     </div>
                 `,
@@ -782,12 +727,6 @@
                 id: 5,
                 title: "Level 5: Spanish 3 - Preterite vs. Imperfect Past Tenses",
                 desc: "Mastering narrating past events, completed preterite actions versus habitual imperfect background descriptions.",
-                revisionFacts: {
-                    shortcut: "Remember: **Preterite** is for specific milestones, single events, and interruptions (like a dot on a timeline). **Imperfect** is for habits, background descriptions, age, weather, and time (like a continuous wave).",
-                    trap: "Don't confuse 'fui' (I went / I was) in the preterite with 'iba' (I used to go) in the imperfect.",
-                    culture: "When telling stories or memoirs in Spanish, mastering the contrast between preterite and imperfect is the #1 marker of natural storytelling fluency.",
-                    fact: "The imperfect tense is one of the easiest in Spanish because only three verbs are irregular across the entire dictionary: *ir*, *ser*, and *ver*."
-                },
                 chapter: `
                     <h3>Chapter 5: Storytelling with Preterite and Imperfect</h3>
                     <p>Spanish features two past tenses. The <strong>Preterite</strong> narrates completed actions with specific endpoints, while the <strong>Imperfect</strong> describes habitual routines, ongoing background conditions, and time.</p>
@@ -797,6 +736,18 @@
                         <div class="flow-row">
                             <div class="flow-node" style="background:#eff6ff;">Preterite: [•] Single event / milestone</div>
                             <div class="flow-node" style="background:#f0fdf4;">Imperfect: [~~~~] Background / Habitual / Age</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Past Tense Trigger Frequency</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Preterite (Ayer, anoche)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 40%;">Completed Actions</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Imperfect (Siempre, de niño)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 60%; background: #16a34a;">Habits & Background</div></div>
                         </div>
                     </div>
                 `,
@@ -862,12 +813,6 @@
                 id: 6,
                 title: "Level 6: Spanish 3 - Reflexive Verbs & Commands (Imperative)",
                 desc: "Daily personal routines with reflexive pronouns and affirmative/negative informal/formal commands.",
-                revisionFacts: {
-                    shortcut: "For affirmative commands, attach pronouns to the end (e.g., *¡Lávate!*). For negative commands, place pronouns between 'no' and the verb (e.g., *¡No te laves!*).",
-                    trap: "Remember the 9 irregular affirmative *tú* commands with this handy mnemonic: **Di Sal Pon Ten Haz Ve Sé Vaya... wait! Ven** (*Di, Sal, Pon, Ten, Haz, Ve, Sé, Ven*).",
-                    culture: "Reflexive verbs are used heavily in Spanish for daily self-care routines (*levantarse*, *cepillarse*, *ducharse*), reflecting a cultural focus on personal hygiene and grooming.",
-                    fact: "When you attach pronouns to a command that creates 3 or more syllables from the end, you must add a written accent mark to maintain correct word stress (e.g., *escribe* -> *escríbelo*)."
-                },
                 chapter: `
                     <h3>Chapter 6: Reflexive Actions and Giving Commands</h3>
                     <p>Reflexive verbs indicate that the subject performs an action on themselves using pronouns (me, te, se, nos, os, se). Commands (Imperative) tell others what to do.</p>
@@ -879,6 +824,18 @@
                             <div class="flow-node">Tú -> te</div>
                             <div class="flow-node">Él/Ella -> se</div>
                             <div class="flow-node">Nosotros -> nos</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Command Pronoun Placement Rule</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Affirmative Commands</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 80%;">Attached to END (¡Lávate!)</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Negative Commands</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 40%; background: #dc2626;">Before Verb (¡No te laves!)</div></div>
                         </div>
                     </div>
                 `,
@@ -944,12 +901,6 @@
                 id: 7,
                 title: "Level 7: Spanish 4 / Honors - Introduction to Subjunctive Mood",
                 desc: "Present subjunctive mechanics, clause dependency with 'que', and the WEIRDO acronym.",
-                revisionFacts: {
-                    shortcut: "Remember **WEIRDO** for subjunctive triggers: Wishes, Emotions, Impersonal expressions, Recommendations, Doubt, and Ojalá.",
-                    trap: "Subjunctive requires **two different subjects** connected by 'que' (e.g., *Quiero que tú hables*). If there is only one subject, use an infinitive (*Quiero hablar*).",
-                    culture: "The subjunctive mood reflects cultural nuance, politeness, and uncertainty in Spanish thought, shifting focus from objective facts to subjective feelings.",
-                    fact: "To conjugate regular present subjunctive, take the *yo* form of present indicative, drop the *-o*, and add the **opposite** vowel endings (-e for -ar, -a for -er/-ir)."
-                },
                 chapter: `
                     <h3>Chapter 7: Entering the Subjunctive Realm</h3>
                     <p>The <strong>Subjunctive Mood</strong> expresses subjective reality—hopes, doubts, hypothetical situations, recommendations, and emotional reactions rather than objective facts. Remember <strong>WEIRDO</strong>.</p>
@@ -963,6 +914,18 @@
                             <div class="flow-node">R - Recommendations</div>
                             <div class="flow-node">D - Doubt</div>
                             <div class="flow-node">O - Ojalá</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Subjunctive Vowel Ending Shift Rules (-AR vs -ER/-IR)</div>
+                        <div class="bar-row">
+                            <div class="bar-label">-AR Verbs take</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 50%;">E, Es, E, Emos, Éis, En</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">-ER/-IR Verbs take</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 70%; background: #2563eb;">A, As, A, Amos, Áis, An</div></div>
                         </div>
                     </div>
                 `,
@@ -1018,7 +981,7 @@
                     { q: "44. What is the subjunctive form of 'hacer' for 'yo'?", options: ["haga", "hago", "hiciera", "haré"], answer: 0, correctExplanation: "Correct! Yo hago -> haga in subjunctive.", incorrectExplanation: "Incorrect. Hago is indicative." },
                     { q: "45. What does 'A menos que' mean and what mood does it trigger?", options: ["Unless / triggers Subjunctive", "Although / triggers Indicative", "Because / triggers Indicative", "When / triggers Subjunctive conditionally"], answer: 0, correctExplanation: "Correct! 'A menos que' (unless) always triggers subjunctive.", incorrectExplanation: "Incorrect. It mandates subjunctive." },
                     { q: "46. What does 'Sin que' mean and what mood does it trigger?", options: ["Without / triggers Subjunctive", "With / triggers Indicative", "Before / triggers Indicative", "After / triggers Indicative"], answer: 0, correctExplanation: "Correct! 'Sin que' (without) always triggers subjunctive.", incorrectExplanation: "Incorrect. It requires subjunctive." },
-                    { q: "47. How do you say 'Call me when you arrive' if arrival is in an uncertain future?", options: ["Llámame cuando llegas", "Llámame cuando llegues", "Llámame cuando llegaste", "Llámame когда llegarás"], answer: 1, correctExplanation: "Correct! Time conjunctions (cuando) take subjunctive when referring to anticipated future events ('llegues').", incorrectExplanation: "Incorrect. Llegas is present indicative for habitual actions." },
+                    { q: "47. How do you say 'Call me when you arrive' if arrival is in an uncertain future?", options: ["Llámame cuando llegas", "Llámame cuando llegues", "Llámame cuando llegaste", "Llámame cuando llegarás"], answer: 1, correctExplanation: "Correct! Time conjunctions (cuando) take subjunctive when referring to anticipated future events ('llegues').", incorrectExplanation: "Incorrect. Llegas is present indicative for habitual actions." },
                     { q: "48. How do you say 'Call me when you arrive (every time you habitually arrive)'?", options: ["Llámame cuando llegas", "Llámame cuando llegues", "Llámame cuando llegaste", "Llámame cuando llegarás"], answer: 0, correctExplanation: "Correct! Habitual routine uses indicative ('llegas').", incorrectExplanation: "Incorrect. Subjunctive implies future anticipation." },
                     { q: "49. True or False: The subjunctive mood has its own past, present, and future tenses.", options: ["True", "False"], answer: 0, correctExplanation: "Correct! True—the subjunctive mood includes present, imperfect, present perfect, and pluperfect subjunctive tenses.", incorrectExplanation: "Incorrect. Subjunctive features multiple tense variations." },
                     { q: "50. What is the ultimate purpose of mastering the subjunctive mood in Spanish?", options: ["To express doubt, emotion, influence, and hypothesis beyond simple facts", "To conjugate regular -ar verbs in the past", "To state dates and times", "To tell someone's name"], answer: 0, correctExplanation: "Correct! Subjunctive elevates Spanish expression into nuanced emotional and hypothetical discourse.", incorrectExplanation: "Incorrect. Basic facts use indicative." }
@@ -1028,12 +991,6 @@
                 id: 8,
                 title: "Level 8: Spanish 4 / Honors - Future, Conditional & Perfect Tenses",
                 desc: "Future certainty, probability, conditional hypotheticals, and compound tenses.",
-                revisionFacts: {
-                    shortcut: "Future and conditional tenses attach endings directly to the **full infinitive** (e.g., *hablaré*, *hablaría*), and they share the exact same irregular stems (e.g., *har-*, *tendr-*, *saldr-*).",
-                    trap: "Don't confuse compound tenses with simple tenses. Compound tenses always require the auxiliary verb **haber** plus a past participle (-ado/-ido).",
-                    culture: "Using the future tense in Spanish (*¿Será verdad?*) often expresses present probability or guessing rather than strict future time.",
-                    fact: "Past participles when used with *haber* always end in masculine singular *-o* and never change for gender or number."
-                },
                 chapter: `
                     <h3>Chapter 8: Speculation, Future, and Perfect Tenses</h3>
                     <p>The <strong>Future Tense</strong> uses infinitive + endings (-é, -ás...). The <strong>Conditional Tense</strong> uses infinitive + endings (-ía, -ías...). Perfect tenses use Haber + Participle.</p>
@@ -1044,6 +1001,18 @@
                             <div class="flow-node">Haber (he/has/ha...)</div>
                             <div class="flow-node">+</div>
                             <div class="flow-node">Participle (-ado / -ido)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Future vs Conditional Suffix Comparison</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Future Tense (-é, -ás...)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 50%;">Certainty / Probability</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Conditional (-ía, -ías...)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 75%; background: #2563eb;">Hypothetical Outcomes</div></div>
                         </div>
                     </div>
                 `,
@@ -1109,12 +1078,6 @@
                 id: 9,
                 title: "Level 9: AP Spanish Language - Advanced Argumentation & Imperfect Subjunctive",
                 desc: "Imperfect subjunctive, conditional clauses (si clauses), formal discursive writing, and cultural perspectives.",
-                revisionFacts: {
-                    shortcut: "To form the imperfect subjunctive, take the *ellos* preterite form, drop *-ron*, and add **-ra, -ras, -ra, -ráramos, -ran** (remembering the written accent on the nosotros vowel!).",
-                    trap: "The word **si** can *never* be followed directly by the conditional tense in standard Spanish (*Si tendría...* is strictly ungrammatical). It must take the imperfect subjunctive (*Si tuviera...*).",
-                    culture: "AP Spanish Language essays require a formal register, avoiding colloquialisms and integrating sophisticated transitional phrases like *no obstante* and *a pesar de que*.",
-                    fact: "The imperfect subjunctive has two interchangeable sets of endings (-ra and -se), both originating from old Latin pluperfect indicative forms."
-                },
                 chapter: `
                     <h3>Chapter 9: Advanced Argumentation and Hypotheses</h3>
                     <p>Mastering the imperfect subjunctive and 'si' clauses for hypothetical or contrary-to-fact scenarios, preparing for AP-level persuasive writing.</p>
@@ -1125,6 +1088,18 @@
                             <div class="flow-node">Si + Imperfect Subjunctive (-ra)</div>
                             <div class="flow-node">→</div>
                             <div class="flow-node">Conditional Result (-ía)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Formal Discursive Register Elements</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Transitional Connectors</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 60%;">No obstante / Por lo tanto</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Advanced Moods</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 80%; background: #16a34a;">Imperfect Subjunctive</div></div>
                         </div>
                     </div>
                 `,
@@ -1190,12 +1165,6 @@
                 id: 10,
                 title: "Level 10: AP Spanish Literature - Textual Analysis & Stylistics",
                 desc: "Critical analysis of Peninsular and Latin American masterworks, literary devices, and historical contexts.",
-                revisionFacts: {
-                    shortcut: "When analyzing literature, remember core rhetorical devices: **Hipérbaton** (inverted word order), **Anáfora** (repetition at line starts), and **Asíndeton** (omitted conjunctions).",
-                    trap: "Don't just summarize plot in AP Literature essays; you must analyze *how* literary devices and historical contexts (e.g., Baroque disillusionment, Magical Realism) shape the text's theme.",
-                    culture: "Texts span from 14th-century medieval didactic tales (*El Conde Lucanor*) to 20th-century Latin American Boom novels (*Cien años de soledad*), reflecting centuries of socio-political shifts.",
-                    fact: "Magical realism treats supernatural occurrences as normal, everyday occurrences within a realistic setting—a cornerstone of 20th-century Latin American prose."
-                },
                 chapter: `
                     <h3>Chapter 10: Literary Analysis and Hispanic Masterworks</h3>
                     <p>Level 10 represents the pinnacle of secondary Spanish curriculum: analyzing canonical literature across major literary movements from the Middle Ages to the Latin American Boom.</p>
@@ -1204,8 +1173,20 @@
                         <div class="diagram-title">Diagram: Timeline of Literary Eras in Spanish Curriculum</div>
                         <div class="flow-row">
                             <div class="flow-node">Medieval / Siglo de Oro</div>
-                            <div class="flow-node">Romanticismo / Gen. 98</div>
+                            <div class="flow-node">Romanticismo / Gen. '98</div>
                             <div class="flow-node">El Boom Latinoamericano</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Literary Device Frequency in AP Prose</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Metáfora & Símil</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 50%;">Comparative Tropes</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Hipérbaton & Anáfora</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 75%; background: #2563eb;">Syntactic Figures</div></div>
                         </div>
                     </div>
                 `,
@@ -1222,4 +1203,268 @@
                     { q: "5. What is 'Polisíndeton'?", options: ["Using excessive conjunctions (e.g., *y lloraba y reía y gritaba*)", "Omitting conjunctions", "Rhyming words", "Metaphorical language"], answer: 0, correctExplanation: "Correct! Polisíndeton uses repetitive conjunctions.", incorrectExplanation: "Incorrect. Omitting them is asíndeton." },
                     { q: "6. What is 'Hipérbole'?", options: ["Intentional exaggeration for emphasis (e.g., *muero de hambre*)", "Understatement", "Personification", "Irony"], answer: 0, correctExplanation: "Correct! Hipérbole is dramatic exaggeration.", incorrectExplanation: "Incorrect. Understatement is litotes." },
                     { q: "7. What is 'Personificación' (Prosopopeya)?", options: ["Giving human characteristics to non-human objects or abstract ideas", "Describing humans as animals", "Repeating words", "Rhyming"], answer: 0, correctExplanation: "Correct! Personification attributes human traits to non-human entities.", incorrectExplanation: "Incorrect. Animal traits is zoomorphism." },
-                    { q: "8. What is a '
+                    { q: "8. What is a 'Metáfora'?", options: ["A direct comparison between two distinct things without using 'como'", "A comparison using 'como'", "Exaggeration", "Contradiction"], answer: 0, correctExplanation: "Correct! Metaphor compares directly without 'como'. Comparisons with 'como' are símil.", incorrectExplanation: "Incorrect. Using 'como' is a simile." },
+                    { q: "9. Who authored *Don Quijote de la Mancha*, the foundational masterpiece of Spanish literature?", options: ["Miguel de Cervantes", "Federico García Lorca", "Sor Juana Inés de la Cruz", "Gabriel García Márquez"], answer: 0, correctExplanation: "Correct! Miguel de Cervantes wrote Don Quijote (1605/1615).", incorrectExplanation: "Incorrect. Lorca is a 20th-century poet/playwright." },
+                    { q: "10. In what literary era was *Don Quijote* written?", options: ["El Siglo de Oro (Baroque / Renaissance transition)", "El Boom Latinoamericano", "El Romanticismo", "El Modernismo"], answer: 0, correctExplanation: "Correct! Cervantes wrote during the Spanish Golden Age (Siglo de Oro).", incorrectExplanation: "Incorrect. The Boom occurred in the 1960s." },
+                    { q: "11. Who wrote *El Conde Lucanor* ('Lo que sucedió a un mancebo que casó con una mujer muy fuerte y brava')?", options: ["Don Juan Manuel", "Miguel de Cervantes", "Bécquer", "Borges"], answer: 0, correctExplanation: "Correct! Don Juan Manuel wrote El Conde Lucanor in the 14th century (Medieval era).", incorrectExplanation: "Incorrect. Cervantes wrote Don Quijote." },
+                    { q: "12. Who was Sor Juana Inés de la Cruz ('Hombres necios que acusáis...')?", options: ["A Mexican Baroque nun and intellectual poet of the 17th century", "A 20th-century novelist", "A medieval knight", "A Romantic poet from Spain"], answer: 0, correctExplanation: "Correct! Sor Juana was a prominent Baroque writer in colonial New Spain.", incorrectExplanation: "Incorrect. She lived during the 1600s." },
+                    { q: "13. What is the central thematic critique in Sor Juana's poem *Hombres necios*?", options: ["The hypocrisy of men who blame women for the very vices men themselves provoke or encourage", "The beauty of nature", "Chivalric honor codes", "Political revolution"], answer: 0, correctExplanation: "Correct! Hombres necios critiques gender double standards and hypocrisy.", incorrectExplanation: "Incorrect. It is not about nature." },
+                    { q: "14. Who wrote the play *La casa de Bernarda Alba*?", options: ["Federico García Lorca", "Miguel de Unamuno", "Gabriel García Márquez", "Julio Cortázar"], answer: 0, correctExplanation: "Correct! Federico García Lorca wrote La casa de Bernarda Alba (1936).", incorrectExplanation: "Incorrect. Unamuno wrote *San Manuel Bueno, mártir*." },
+                    { q: "15. What is the central theme of *La casa de Bernarda Alba*?", options: ["Repression of women, societal obsession with honor and reputation, and tyranny", "Magical realism in rural villages", "Exploration of outer space", "Chivalric romance"], answer: 0, correctExplanation: "Correct! Bernarda imposes strict mourning and oppression on her daughters.", incorrectExplanation: "Incorrect. It is a tragedy of rural Andalusian repression." },
+                    { q: "16. Who wrote *San Manuel Bueno, mártir*?", options: ["Miguel de Unamuno", "Jorge Luis Borges", "Horacio Quiroga", "Emilia Pardo Bazán"], answer: 0, correctExplanation: "Correct! Miguel de Unamuno (Generation of '98) authored San Manuel Bueno, mártir.", incorrectExplanation: "Incorrect. Quiroga wrote *El hijo*." },
+                    { q: "17. What is the core existential dilemma faced by Don Manuel in *San Manuel Bueno, mártir*?", options: ["He secretly lacks religious faith in an afterlife but pretends to believe to keep his parishioners at peace", "He wants to overthrow the government", "He seeks wealth and fame", "He wishes to become a monk"], answer: 0, correctExplanation: "Correct! Don Manuel suffers from tragic existential anguish, maintaining faith as a pious illusion for his village.", incorrectExplanation: "Incorrect. He is not seeking wealth." },
+                    { q: "18. Who authored the short story *No oyes ladrar los perros*?", options: ["Juan Rulfo", "Gabriel García Márquez", "Carlos Fuentes", "Horacio Quiroga"], answer: 0, correctExplanation: "Correct! Juan Rulfo wrote *No oyes ladrar los perros* (Mexican literature, Rulfo's *El llano en llamas*).", incorrectExplanation: "Incorrect. García Márquez wrote *Cien años de soledad*." },
+                    { q: "19. What is the emotional dynamic between father and son in *No oyes ladrar los perros*?", options: ["A burdensome journey where a father carries his wounded, criminal son across mountains while grappling with resentment and paternal duty", "A joyful family reunion", "A business partnership", "A political debate"], answer: 0, correctExplanation: "Correct! Ignacio is wounded on the father's back, listening for the dogs of Tonaya.", incorrectExplanation: "Incorrect. It is a tense, sorrowful journey." },
+                    { q: "20. Who authored *El Sur* or *La noche boca arriba*?", options: ["Jorge Luis Borges wrote *El Sur*; Julio Cortázar wrote *La noche boca arriba*", "Cervantes wrote both", "Lorca wrote both", "Sor Juana wrote both"], answer: 0, correctExplanation: "Correct! Borges wrote El Sur, and Cortázar wrote La noche boca arriba.", incorrectExplanation: "Incorrect. They are separate masters of 20th-century Argentine prose." },
+                    { q: "21. What hallmark narrative technique defines Julio Cortázar's *La noche boca arriba*?", options: ["Parallel, blurring realities alternating between a modern motorcycle accident in a city and an Aztec ritual manhunt (la guerra florida)", "Strict chronological realism", "Historical biography", "Epistolary letters"], answer: 0, correctExplanation: "Correct! Cortázar blurs dreams and reality across historical time periods.", incorrectExplanation: "Incorrect. It is not straightforward realism." },
+                    { q: "22. Who wrote *La metamorfosis* or magical realist short stories like *Un señor muy viejo con unas alas enormes*?", options: ["Gabriel García Márquez", "Don Juan Manuel", "Garcilaso de la Vega", "Luis de Góngora"], answer: 0, correctExplanation: "Correct! Gabriel García Márquez is a central figure of Magical Realism.", incorrectExplanation: "Incorrect. Metamorfosis was written by Kafka in German; García Márquez wrote magical realism in Spanish." },
+                    { q: "23. What defines 'Realismo Mágico' (Magical Realism) in Latin American literature?", options: ["The seamless integration of supernatural, mythical, or fantastic elements into an otherwise realistic, mundane everyday setting", "Sci-fi spaceships and laser battles", "Strict historical reporting", "Medieval chivalry romances"], answer: 0, correctExplanation: "Correct! Magical realism treats the extraordinary as ordinary daily occurrences.", incorrectExplanation: "Incorrect. Sci-fi is futuristic technology, not magical realism." },
+                    { q: "24. Who wrote the modernist poem *A Roosevelt*?", options: ["Rubén Darío", "José Martí", "Pablo Neruda", "Octavio Paz"], answer: 0, correctExplanation: "Correct! Rubén Darío (Nicaragua, Modernismo leader) authored *A Roosevelt*.", incorrectExplanation: "Incorrect. Martí wrote *Nuestra América*." },
+                    { q: "25. What is the socio-political critique in Rubén Darío's *A Roosevelt*?", options: ["A warning against US imperialist hegemony and cultural dominance over Latin America ('la América nuestra')", "Praise for industrialization", "A love poem", "A religious hymn"], answer: 0, correctExplanation: "Correct! Darío critiques US imperialism and champions indigenous Latin American spirit.", incorrectExplanation: "Incorrect. It is anti-imperialist." },
+                    { q: "26. Who authored the essay *Nuestra América*?", options: ["José Martí", "Rubén Darío", "Octavio Paz", "Sor Juana"], answer: 0, correctExplanation: "Correct! José Martí (Cuban patriot and writer) wrote *Nuestra América* (1891).", incorrectExplanation: "Incorrect. Darío wrote A Roosevelt." },
+                    { q: "27. What is the main thesis of José Martí's *Nuestra América*?", options: ["Latin American nations must unite, govern based on their own distinct realities rather than blindly copying foreign European/US models, and reject tyranny", "Latin America should annex Europe", "Monarchy is the ideal government", "Isolationism is paramount"], answer: 0, correctExplanation: "Correct! Martí calls for authentic self-governance rooted in native American realities ('el gobierno ha de nacer del país').", incorrectExplanation: "Incorrect. He rejects copying foreign institutions blindly." },
+                    { q: "28. Who wrote the poem *Balada de los dos abuelos*?", options: ["Nicolás Guillén", "Pablo Neruda", "Federico García Lorca", "Julia de Burgos"], answer: 0, correctExplanation: "Correct! Nicolás Guillén (Afro-Cuban poet) authored *Balada de los dos abuelos*.", incorrectExplanation: "Incorrect. Neruda wrote Veinte poemas de amor." },
+                    { q: "29. What is the central symbolism in Guillén's *Balada de los dos abuelos*?", options: ["The poet reconciles his dual heritage—one grandfather is a white Spanish conquistador/slave trader in shackles, the other is a black African slave brought in chains—symbolizing Caribbean mestizo identity", "Two rival kings", "A military battle", "A weather storm"], answer: 0, correctExplanation: "Correct! It celebrates Afro-Antillean syncretism and racial synthesis.", incorrectExplanation: "Incorrect. It is about ancestry and racial reconciliation." },
+                    { q: "30. Who wrote the feminist poem *Y a mí misma me gasté* or *A Julia de Burgos*?", options: ["Julia de Burgos", "Sor Juana Inés de la Cruz", "Alfonsina Storni", "Gabriela Mistral"], answer: 0, correctExplanation: "Correct! Julia de Burgos (Puerto Rico) wrote *A Julia de Burgos*, addressing the split between her public societal persona and her inner authentic self.", incorrectExplanation: "Incorrect. Alfonsina Storni wrote *Peso ancestral*." },
+                    { q: "31. What is the core conflict in Julia de Burgos's poem *A Julia de Burgos*?", options: ["The alienation between the author's internal authentic soul and the rigid social expectations dictated by hypocritical society", "A political election", "A war between nations", "Financial debt"], answer: 0, correctExplanation: "Correct! She splits herself into 'Tú' (society's puppet) and 'Yo' (her true soul).", incorrectExplanation: "Incorrect. It is an internal existential split." },
+                    { q: "32. Who wrote the feminist poem *Peso ancestral*?", options: ["Alfonsina Storni", "Julia de Burgos", "Gabriela Mistral", "Sor Juana"], answer: 0, correctExplanation: "Correct! Alfonsina Storni (Argentine-Swiss poet) authored *Peso ancestral*.", incorrectExplanation: "Incorrect. Mistral wrote *Soledad* / *La destrucción de la papa*." },
+                    { q: "33. What theme does Alfonsina Storni explore in *Peso ancestral*?", options: ["The generational burden of repressed male emotional tears and patriarchal expectations ('mi padre no lloró porque llorار no debía')", "Economic poverty", "Mountain climbing", "Religious dogma"], answer: 0, correctExplanation: "Correct! Storni explores how men in her family suppressed emotional grief across generations.", incorrectExplanation: "Incorrect. It focuses on emotional repression." },
+                    { q: "34. True or False: In AP Spanish Literature essay prompts, students must analyze how a specific text exemplifies the characteristics of its literary movement and historical era.", options: ["True", "False"], answer: 0, correctExplanation: "Correct! True—contextualization is a core scoring requirement on the AP Lit exam.", incorrectExplanation: "Incorrect. History and literary eras are essential for top scores." },
+                    { q: "35. What is 'El Boom Latinoamericano'?", options: ["A literary explosion in the 1960s and 1970s where Latin American fiction gained massive international acclaim (Márquez, Cortázar, Fuentes, Vargas Llosa)", "An economic stock market crash", "A military coup", "A musical genre"], answer: 0, correctExplanation: "Correct! The Boom was a golden age of international publishing for Latin American novelists.", incorrectExplanation: "Incorrect. It refers to literature, not economics." },
+                    { q: "36. Who authored *La muerte de Artemio Cruz*?", options: ["Carlos Fuentes", "Gabriel García Márquez", "Mario Vargas Llosa", "Juan Rulfo"], answer: 0, correctExplanation: "Correct! Carlos Fuentes authored *La muerte de Artemio Cruz* (Mexican Boom novel).", incorrectExplanation: "Incorrect. Vargas Llosa wrote *La ciudad y los perros*." },
+                    { q: "37. What narrative perspective is famously used in Carlos Fuentes's *La muerte de Artemio Cruz*?", options: ["Second-person singular ('Tú'), forcing the dying corrupt revolutionary to confront his own betrayals", "First-person plural ('Nosotros')", "Objective third-person omniscient", "Epistolary diary"], answer: 0, correctExplanation: "Correct! Fuentes uses 'Tú' to create a powerful internal trial on Artemio's deathbed.", incorrectExplanation: "Incorrect. Second-person 'tú' is rare and distinctive here." },
+                    { q: "38. Who wrote the poem *Walking Around*?", options: ["Pablo Neruda", "Rubén Darío", "Nicolás Guillén", "Octavio Paz"], answer: 0, correctExplanation: "Correct! Pablo Neruda (Chilean Nobel laureate) wrote *Walking Around* (Residencia en la tierra).", incorrectExplanation: "Incorrect. Darío wrote Modernismo poetry." },
+                    { q: "39. What is the tone and theme of Pablo Neruda's *Walking Around*?", options: ["Weary alienation, existential disgust with modern industrialized city life, and surreal urban fatigue ('Sucede que me canso de ser hombre')", "Joyful celebration of capitalism", "Romantic love", "Military patriotism"], answer: 0, correctExplanation: "Correct! Neruda expresses profound urban existential exhaustion and alienation.", incorrectExplanation: "Incorrect. It is profoundly anti-industrial/alienated." },
+                    { q: "40. Who wrote the essay *Piedra de sol* or *El laberinto de la soledad*?", options: ["Octavio Paz", "José Martí", "Carlos Fuentes", "Mario Vargas Llosa"], answer: 0, correctExplanation: "Correct! Octavio Paz authored *El laberinto de la soledad* (The Labyrinth of Solitude, 1950).", incorrectExplanation: "Incorrect. Martí wrote Nuestra América." },
+                    { q: "41. What is the core thesis of Octavio Paz's *El laberinto de la soledad*?", options: ["An examination of Mexican national identity, historical trauma from the Conquest, isolation, and the mask of Mexican machismo", "An economic analysis of NAFTA", "A geographical study of mountain ranges", "A biography of Cortés"], answer: 0, correctExplanation: "Correct! Paz explores the psychological solitude and cultural syncretism of Mexico.", incorrectExplanation: "Incorrect. It is a psychological and cultural essay." },
+                    { q: "42. True or False: In AP Spanish Literature essays, quoting directly from the text and explaining how the quote illustrates a literary device is essential for earning high analysis points.", options: ["True", "False"], answer: 0, correctExplanation: "Correct! True—textual evidence and stylistic explanation are mandatory for top scores.", incorrectExplanation: "Incorrect. Unsupported claims earn low scores." },
+                    { q: "43. What is the literary term for a story within a story (like *El Conde Lucanor* where Patronio tells a tale to Count Lucanor)?", options: ["Marco escénico / Metacuento (Story within a story)", "In media res", "Símil", "Hipérbaton"], answer: 0, correctExplanation: "Correct! Metacuento or frame narrative (*marco escénico*) embeds one narrative inside another.", incorrectExplanation: "Incorrect. In media res means starting in the middle of action." },
+                    { q: "44. What does *In media res* mean in narrative structure?", options: ["Starting a story in the middle of the action rather than chronological beginning", "Ending a story abruptly", "Telling a story backwards", "Writing in first person"], answer: 0, correctExplanation: "Correct! *In media res* plunges the reader straight into ongoing action.", incorrectExplanation: "Incorrect. Chronological start is *ab ovo*." },
+                    { q: "45. Who wrote the Renaissance sonnet *En tanto que de rosa y azucena* (Soneto XXIII)?", options: ["Garcilaso de la Vega", "Luis de Góngora", "Francisco de Quevedo", "Lope de Vega"], answer: 0, correctExplanation: "Correct! Garcilaso de la Vega is the master of Spanish Renaissance poetry and the *carpe diem* trope.", incorrectExplanation: "Incorrect. Góngora and Quevedo led Baroque Gongorism/Quevedism." },
+                    { q: "46. What does the *Carpe diem* theme mean in Renaissance poetry like Garcilaso's Sonnet XXIII?", options: ["Seize the day / youth before time and old age wither physical beauty ('marchitará la rosa el viento helado')", "Prepare for death (*memento mori*)", "Worship nature", "Celebrate political war"], answer: 0, correctExplanation: "Correct! Carpe diem urges youth to enjoy their prime before time destroys it.", incorrectExplanation: "Incorrect. Memento mori focuses strictly on mortality." },
+                    { q: "47. Who wrote the Baroque sonnet *Mientras por competir con tu cabello* (Soneto CLXVI)?", options: ["Luis de Góngora", "Garcilaso de la Vega", "Federico García Lorca", "Pablo Neruda"], answer: 0, correctExplanation: "Correct! Luis de Góngora (Culteranismo leader) wrote this famous Baroque sonnet.", incorrectExplanation: "Incorrect. Garcilaso is Renaissance." },
+                    { q: "48. How does Góngora's Baroque sonnet modify the Renaissance *Carpe diem* theme?", options: ["It adds a stark *memento mori* conclusion: youth transforms directly into earth, smoke, dust, shadow, and nothingness (*en tierra, en humo, en polvo, en sombra, en nada*)", "It praises eternal life", "It ignores time", "It celebrates modern technology"], answer: 0, correctExplanation: "Correct! Baroque poetry darkens Renaissance optimism with inevitable decay into nothingness.", incorrectExplanation: "Incorrect. It is far darker and more ornate than Garcilaso." },
+                    { q: "49. Who wrote the satirical Baroque sonnet *A Dafne en una coraza* or *Miré los muros de la patria mía*?", options: ["Francisco de Quevedo", "Luis de Góngora", "Cervantes", "Lope de Vega"], answer: 0, correctExplanation: "Correct! Francisco de Quevedo (Conceptismo leader and Góngora's bitter rival) authored these philosophical/satirical poems.", incorrectExplanation: "Incorrect. Góngora led Culteranismo." },
+                    { q: "50. What is the overarching intellectual goal of completing all 10 levels of HablaFluido Academy?", options: ["Achieving comprehensive, native-level mastery spanning fundamental phonetics, advanced grammar, argumentative discourse, and canonical literary criticism", "Memorizing ten vocabulary words", "Passing a casual quiz", "Learning how to order tacos"], answer: 0, correctExplanation: "Correct! This curriculum covers the full spectrum from Novice acquisition to AP Literature mastery.", incorrectExplanation: "Incorrect. It spans a complete secondary and advanced academic curriculum." }
+                ]
+            }
+        ];
+
+        // Dictionary Data
+        const dictionary = {
+            "hola": "Hello",
+            "gracias": "Thank you",
+            "gato": "Cat",
+            "perro": "Dog",
+            "agua": "Water",
+            "comida": "Food",
+            "amigo": "Friend",
+            "casa": "House",
+            "libro": "Book",
+            "buenos dias": "Good morning"
+        };
+
+        let currentLevelId = null;
+
+        function getCompletedLevels() {
+            try {
+                return JSON.parse(localStorage.getItem('hablafluido_completed')) || [];
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function saveCompletedLevel(id) {
+            let completed = getCompletedLevels();
+            if (!completed.includes(id)) {
+                completed.push(id);
+                localStorage.setItem('hablafluido_completed', JSON.stringify(completed));
+            }
+        }
+
+        function renderDashboard() {
+            const container = document.getElementById('level-container');
+            container.innerHTML = "";
+
+            const completedLevels = getCompletedLevels();
+
+            levelsData.forEach((level, index) => {
+                let isLocked = true;
+                if (index === 0) {
+                    isLocked = false;
+                } else {
+                    const prevLevelId = levelsData[index - 1].id;
+                    if (completedLevels.includes(prevLevelId) || completedLevels.includes(level.id)) {
+                        isLocked = false;
+                    }
+                }
+                
+                const isCompleted = completedLevels.includes(level.id);
+
+                const card = document.createElement('div');
+                card.className = `level-card ${isLocked ? 'locked' : ''}`;
+                card.innerHTML = `
+                    <div class="level-info">
+                        <h3>${level.title} ${isCompleted ? ' ✅ (Passed)' : ''}</h3>
+                        <p>${level.desc}</p>
+                    </div>
+                    <button class="btn" ${isLocked ? 'disabled' : ''} onclick="openLesson(${level.id})">
+                        ${isLocked ? '🔒 Locked' : (isCompleted ? 'Review Lesson' : 'Start Lesson')}
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openLesson(id) {
+            currentLevelId = id;
+            const level = levelsData.find(l => l.id === id);
+            if (!level) return;
+
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('lesson-view').style.display = 'block';
+            document.getElementById('lesson-title').textContent = level.title;
+            document.getElementById('chapter-content').innerHTML = level.chapter;
+
+            // Render Video Resources Section
+            const videoListContainer = document.getElementById('video-list-container');
+            videoListContainer.innerHTML = "";
+            level.videoResources.forEach(v => {
+                const item = document.createElement('div');
+                item.className = "video-item";
+                item.innerHTML = `
+                    <h5>🎬 Title: "${v.title}"</h5>
+                    <p><strong>Created by:</strong> ${v.creator} | <strong>Summary:</strong> ${v.summary}</p>
+                `;
+                videoListContainer.appendChild(item);
+            });
+
+            // Reset Gating & Quiz
+            document.getElementById('read-check').checked = false;
+            document.getElementById('unlock-quiz-btn').disabled = true;
+            document.getElementById('quiz-section').style.display = 'none';
+            document.getElementById('assessment-feedback').textContent = "";
+
+            // Render Quiz Questions
+            const quizContainer = document.getElementById('quiz-questions-container');
+            quizContainer.innerHTML = "";
+            level.questions.forEach((qObj, qIndex) => {
+                const qCard = document.createElement('div');
+                qCard.className = 'quiz-question-card';
+                
+                let optionsHtml = '';
+                qObj.options.forEach((opt, oIndex) => {
+                    optionsHtml += `
+                        <label>
+                            <input type="radio" name="q${qIndex}" value="${oIndex}"> ${opt}
+                        </label>
+                    `;
+                });
+
+                qCard.innerHTML = `
+                    <p style="font-weight: 600; color: var(--primary);">${qObj.q}</p>
+                    <div class="quiz-options">${optionsHtml}</div>
+                    <div class="explanation" id="exp-${qIndex}"></div>
+                `;
+                quizContainer.appendChild(qCard);
+            });
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function returnToDashboard() {
+            document.getElementById('lesson-view').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            renderDashboard();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkPrerequisites() {
+            const isChecked = document.getElementById('read-check').checked;
+            document.getElementById('unlock-quiz-btn').disabled = !isChecked;
+        }
+
+        function revealQuiz() {
+            document.getElementById('quiz-section').style.display = 'block';
+            document.getElementById('unlock-quiz-btn').disabled = true;
+            document.getElementById('quiz-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function submitAssessment() {
+            const level = levelsData.find(l => l.id === currentLevelId);
+            if (!level) return;
+
+            let score = 0;
+            let allAnswered = true;
+
+            level.questions.forEach((qObj, qIndex) => {
+                const selected = document.querySelector(`input[name="q${qIndex}"]:checked`);
+                const expDiv = document.getElementById(`exp-${qIndex}`);
+                expDiv.style.display = 'block';
+
+                if (!selected) {
+                    allAnswered = false;
+                    expDiv.className = "explanation incorrect";
+                    expDiv.textContent = "You did not answer this question.";
+                    return;
+                }
+
+                const selectedVal = parseInt(selected.value);
+                if (selectedVal === qObj.answer) {
+                    score++;
+                    expDiv.className = "explanation correct";
+                    expDiv.textContent = qObj.correctExplanation;
+                } else {
+                    expDiv.className = "explanation incorrect";
+                    expDiv.textContent = qObj.incorrectExplanation;
+                }
+            });
+
+            const feedback = document.getElementById('assessment-feedback');
+            if (!allAnswered) {
+                feedback.style.color = "var(--error)";
+                feedback.textContent = "Please answer all 50 questions before submitting.";
+                return;
+            }
+
+            const percentage = (score / level.questions.length) * 100;
+            if (percentage >= 80) {
+                saveCompletedLevel(currentLevelId);
+                feedback.style.color = "var(--success)";
+                feedback.textContent = `🎉 Congratulations! You passed with ${score}/50 (${percentage}%). Next level unlocked! Click 'Back to Dashboard' to continue.`;
+            } else {
+                feedback.style.color = "var(--error)";
+                feedback.textContent = `⚠️ You scored ${score}/50 (${percentage}%). You need at least 80% to pass and unlock the next level. Review the explanations above and try again!`;
+            }
+            feedback.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function lookupWord() {
+            const input = document.getElementById('dict-input').value.trim().toLowerCase();
+            const resultBox = document.getElementById('dict-result');
+            
+            if (!input) {
+                resultBox.style.color = "var(--error)";
+                resultBox.textContent = "Please enter a word to search.";
+                return;
+            }
+
+            if (dictionary[input]) {
+                resultBox.style.color = "var(--success)";
+                resultBox.textContent = `Definition: "${dictionary[input]}"`;
+            } else {
+                resultBox.style.color = "var(--error)";
+                resultBox.textContent = `Word "${input}" not found in the quick dictionary.`;
+            }
+        }
+
+        function handleDictEnter(e) {
+            if (e.key === 'Enter') {
+                lookupWord();
+            }
+        }
+
+        renderDashboard();
+    </script>
+</body>
+</html>
