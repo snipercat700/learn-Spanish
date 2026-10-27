@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HablaFluido - Master Spanish Step-by-Step</title>
+    <style>
+        :root {
+            --primary: #1e293b;
+            --accent: #2563eb;
+            --success: #16a34a;
+            --locked: #94a3b8;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: #334155;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        h1 { color: var(--primary); margin-bottom: 5px; }
+        p { color: #64748b; }
+        
+        .main-container {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        /* Dashboard & Level Cards */
+        .level-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .level-card {
+            background: var(--card-bg);
+            padding: 18px 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 5px solid var(--accent);
+            transition: all 0.2s;
+        }
+        .level-card.locked {
+            border-left-color: var(--locked);
+            background: #f1f5f9;
+            opacity: 0.75;
+        }
+        .level-info h3 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
+        .level-info p { margin: 0; font-size: 0.85rem; }
+        
+        .btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: #1d4ed8; }
+        .level-card.locked .btn {
+            background-color: var(--locked);
+            cursor: not-allowed;
+        }
+
+        /* Lesson / Quiz View */
+        #lesson-view {
+            display: none;
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+        .quiz-question {
+            font-weight: 600;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .quiz-options label {
+            display: block;
+            background: #f1f5f9;
+            padding: 10px 14px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .quiz-options label:hover { background: #e2e8f0; }
+
+        /* Dictionary Widget */
+        .dictionary-box {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            margin-top: 20px;
+        }
+        .dictionary-box h3 { margin-top: 0; color: var(--primary); }
+        .dict-search-area {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .dict-search-area input {
+            flex: 1;
+            padding: 8px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        #dict-result {
+            font-weight: 500;
+            color: var(--success);
+            min-height: 24px;
+        }
+
+        .back-btn {
+            background: #64748b;
+            margin-bottom: 15px;
+        }
+        .back-btn:hover { background: #475569; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>HablaFluido</h1>
+        <p>Your interactive, 12-level pathway from Zero to Spanish Fluency.</p>
+    </header>
+
+    <div class="main-container">
+
+        <!-- DASHBOARD VIEW -->
+        <div id="dashboard">
+            <div class="level-grid" id="level-container">
+                <!-- Levels will be dynamically injected here via JS -->
+            </div>
+
+            <!-- Mini Dictionary / Translator Widget -->
+            <div class="dictionary-box">
+                <h3>Quick Spanish-English Dictionary</h3>
+                <p style="font-size: 0.85rem; margin-bottom: 10px;">Type a common Spanish word to look up its meaning:</p>
+                <div class="dict-search-area">
+                    <input type="text" id="dict-input" placeholder="e.g., Hola, Gracias, Gato..." onkeypress="handleDictEnter(event)">
+                    <button class="btn" onclick="lookupWord()">Search</button>
+                </div>
+                <div id="dict-result"></div>
+            </div>
+        </div>
+
+        <!-- LESSON & QUIZ VIEW -->
+        <div id="lesson-view">
+            <button class="btn back-btn" onclick="returnToDashboard()">← Back to Dashboard</button>
+            <h2 id="lesson-title">Lesson Title</h2>
+            <div id="lesson-content"></div>
+            <div id="quiz-container"></div>
+            <button class="btn" id="submit-quiz-btn" style="margin-top: 25px;" onclick="gradeQuiz()">Submit Quiz</button>
+            <p id="quiz-feedback" style="font-weight: bold; margin-top: 10px;"></p>
+        </div>
+
+    </div>
+
+    <script>
+        // Curriculum Data Structure (12 Levels)
+        const levelsData = [
+            { id: 1, title: "Level 1: Everyday Survival Words", desc: "Greetings, numbers, polite expressions, and basic nouns.", content: "Review words like <strong>Hola</strong> (Hello), <strong>Gracias</strong> (Thank you), <strong>Por favor</strong> (Please), and <strong>Adiós</strong> (Goodbye).", question: "What does 'Gracias' mean?", options: ["Hello", "Thank you", "Goodbye", "Please"], answer: 1 },
+            { id: 2, title: "Level 2: Basic Pronouns & Verbs", desc: "Subject pronouns (Yo, Tú, Él) and regular present tense verbs.", content: "Learn pronouns: <strong>Yo</strong> (I), <strong>Tú</strong> (You), <strong>Él/Ella</strong> (He/She).", question: "How do you say 'I' in Spanish?", options: ["Tú", "Yo", "Él", "Ellos"], answer: 1 },
+            { id: 3, title: "Level 3: Routine & Description (A1 Milestone)", desc: "Telling time, family members, and Ser vs. Estar.", content: "Master <strong>Ser</strong> (permanent characteristics) vs. <strong>Estar</strong> (temporary states/locations).", question: "Which verb is used for temporary states like feeling happy?", options: ["Ser", "Estar", "Tener", "Ir"], answer: 1 },
+            { id: 4, title: "Level 4: Past & Future Essentials (A2)", desc: "Introduction to Preterite past tense and simple future plans.", content: "Learn how to express past actions using regular preterite endings and future plans with <em>ir + a + infinitive</em>.", question: "What does 'Voy a comer' mean?", options: ["I ate", "I am going to eat", "I want to eat", "I like eating"], answer: 1 },
+            { id: 5, title: "Level 6: Intermediate Grammar & Reflexives", desc: "Daily routine verbs and expressing likes with Gustar.", content: "Reflexive verbs show actions you do to yourself, such as <em>levantarse</em> (to get up).", question: "What does 'Me levanto' mean?", options: ["I get up", "You wake me", "I go to sleep", "I sit down"], answer: 0 },
+            { id: 6, title: "Level 6: Direct & Indirect Pronouns", desc: "Mastering pronoun placement like lo, la, le, me, te.", content: "Object pronouns replace direct and indirect objects to make sentences flow naturally.", question: "What does 'Te amo' mean?", options: ["I love him", "I love you", "You love me", "We love them"], answer: 1 },
+            { id: 7, title: "Level 7: The Subjunctive Mood - Part 1 (B1)", desc: "Expressing wishes, doubts, and emotions with present subjunctive.", content: "The subjunctive mood is used when expressing uncertainty, desires, or influence over others.", question: "Which mood expresses doubt or wishes?", options: ["Indicative", "Subjunctive", "Imperative", "Conditional"], answer: 1 },
+            { id: 8, title: "Level 8: Advanced Past & Narration (B2)", desc: "Blending Preterite and Imperfect tenses smoothly.", content: "Use the Imperfect tense for background descriptions and habits, and Preterite for sudden actions interrupting them.", question: "Which tense is typically used for ongoing background actions in the past?", options: ["Preterite", "Imperfect", "Future", "Subjunctive"], answer: 1 },
+            { id: 9, title: "Level 9: Hypotheticals & Past Subjunctive", desc: "Conditional sentences ('If I were you...') and advanced grammar.", content: "Combine the past subjunctive with the conditional tense to create hypothetical scenarios.", question: "How do you say 'If I had money...'?", options: ["Si tengo dinero", "Si tuviera dinero", "Si tendré dinero", "Si anduve dinero"], answer: 1 },
+            { id: 10, title: "Level 10: Idioms, Slang, & Regional Variations", desc: "Colloquialisms, Spain vs. Latin American differences, and native speed.", content: "Discover how everyday idioms enrich your speech and how vocabulary shifts across regions.", question: "What does 'Tener hambre' literally translate to?", options: ["To have hunger", "To be angry", "To want food", "To be fast"], answer: 0 },
+            { id: 11, title: "Level 11: Professional & Academic Spanish (C1)", desc: "Formal writing, business vocabulary, and complex literature.", content: "Develop precise vocabulary tailored for formal presentations, journalism, and negotiation.", question: "Which register is appropriate for professional business emails?", options: ["Slang", "Formal / Usted", "Familiar / Tú", "Poetic"], answer: 1 },
+            { id: 12, title: "Level 12: Native Fluency & Articulation (C2)", desc: "Nuanced expression, rhetorical skill, and complete mastery.", content: "Attain native-level articulation capable of handling rapid debates, humor, and subtle stylistic tones.", question: "At C2 level, how should you comprehend native media?", options: ["With subtitles", "With a dictionary", "Effortlessly without translation", "With a transcript"], answer: 2 }
+        ];
+
+        // Simple built-in dictionary database
+        const spanishDictionary = {
+            "hola": "Hello",
+            "gracias": "Thank you",
+            "por favor": "Please",
+            "adios": "Goodbye",
+            "amigo": "Friend",
+            "gato": "Cat",
+            "perro": "Dog",
+            "agua": "Water",
+            "casa": "House",
+            "libro": "Book",
+            "comer": "To eat",
+            "beber": "To drink",
+            "hablar": "To speak",
+            "escuela": "School",
+            "trabajo": "Work"
+        };
+
+        // Progress Tracking
+        let currentLevel = localStorage.getItem('spanishLevel') ? parseInt(localStorage.getItem('spanishLevel')) : 1;
+        let activeLevelId = null;
+
+        // Render Dashboard Levels
+        function renderDashboard() {
+            const container = document.getElementById('level-container');
+            container.innerHTML = '';
+
+            levelsData.forEach(level => {
+                const isLocked = level.id > currentLevel;
+                const card = document.createElement('div');
+                card.className = `level-card ${isLocked ? 'locked' : ''}`;
+                card.innerHTML = `
+                    <div class="level-info">
+                        <h3>${level.title}</h3>
+                        <p>${level.desc}</p>
+                    </div>
+                    <button class="btn" onclick="startLesson(${level.id})" ${isLocked ? 'disabled' : ''}>
+                        ${isLocked ? 'Locked' : (level.id < currentLevel ? 'Review' : 'Start')}
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function startLesson(id) {
+            activeLevelId = id;
+            const level = levelsData.find(l => l.id === id);
+            
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('lesson-view').style.display = 'block';
+            
+            document.getElementById('lesson-title').innerText = level.title;
+            document.getElementById('lesson-content').innerHTML = `
+                <p><strong>Lesson Content:</strong></p>
+                <p>${level.content}</p>
+                <div class="quiz-question">${level.question}</div>
+                <div class="quiz-options" id="quiz-options-list"></div>
+            `;
+
+            const optionsList = document.getElementById('quiz-options-list');
+            optionsList.innerHTML = '';
+            level.options.forEach((opt, index) => {
+                optionsList.innerHTML += `
+                    <label>
+                        <input type="radio" name="quiz-opt" value="${index}"> ${opt}
+                    </label>
+                `;
+            });
+            document.getElementById('quiz-feedback').innerText = '';
+        }
+
+        function gradeQuiz() {
+            const level = levelsData.find(l => l.id === activeLevelId);
+            const selected = document.querySelector('input[name="quiz-opt"]:checked');
+            const feedback = document.getElementById('quiz-feedback');
+
+            if (!selected) {
+                feedback.style.color = '#dc2626';
+                feedback.innerText = "Please select an answer!";
+                return;
+            }
+
+            const answerIndex = parseInt(selected.value);
+            if (answerIndex === level.answer) {
+                feedback.style.color = 'var(--success)';
+                feedback.innerText = "Correct! 🎉 Unlocking next level...";
+                
+                if (activeLevelId >= currentLevel) {
+                    currentLevel = activeLevelId + 1;
+                    localStorage.setItem('spanishLevel', currentLevel);
+                }
+
+                setTimeout(() => {
+                    returnToDashboard();
+                }, 1200);
+            } else {
+                feedback.style.color = '#dc2626';
+                feedback.innerText = "Incorrect. Review the lesson and try again!";
+            }
+        }
+
+        function returnToDashboard() {
+            document.getElementById('lesson-view').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            renderDashboard();
+        }
+
+        // Dictionary Functionality
+        function lookupWord() {
+            const input = document.getElementById('dict-input').value.toLowerCase().trim();
+            const resultDiv = document.getElementById('dict-result');
+            
+            if (!input) {
+                resultDiv.style.color = '#dc2626';
+                resultDiv.innerText = "Please enter a word to search.";
+                return;
+            }
+
+            if (spanishDictionary[input]) {
+                resultDiv.style.color = 'var(--success)';
+                resultDiv.innerText = `Translation: "${spanishDictionary[input]}"`;
+            } else {
+                resultDiv.style.color = '#eab308';
+                resultDiv.innerText = `Word not found in quick dictionary. Try words like 'hola', 'gracias', 'agua', 'amigo'.`;
+            }
+        }
+
+        function handleDictEnter(e) {
+            if (e.key === 'Enter') {
+                lookupWord();
+            }
+        }
+
+        // Initial render on load
+        renderDashboard();
+    </script>
+</body>
+</html>
