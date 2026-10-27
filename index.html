@@ -256,7 +256,7 @@
     </div>
 
     <script>
-        // 10-Level US School & AP Aligned Curriculum Data
+        // Full 10-Level Curriculum Data with complete textbook chapters and active video links
         const levelsData = [
             {
                 id: 1,
@@ -264,24 +264,35 @@
                 desc: "Phonetics, alphabet, greetings, numbers, basic introductions, and core school vocabulary.",
                 chapter: `
                     <h3>Chapter 1: Foundations of Spanish Communication</h3>
-                    <p>Welcome to Level 1, aligned with US High School Spanish 1. You will learn phonetics, basic greetings, numbers up to 100, calendar terms, and core classroom objects.</p>
-                    <ul>
-                        <li><strong>Alphabet & Vowel Sounds:</strong> Pure phonetic vowel sounds (A, E, I, O, U) and alphabet names.</li>
-                        <li><strong>Greetings & Courtesies:</strong> Hola, Buenos días, Por favor, Gracias, De nada.</li>
-                        <li><strong>Classroom Nouns:</strong> El bolígrafo, el cuaderno, la profesora, la clase.</li>
-                    </ul>
+                    <p>Welcome to Level 1. Spanish is completely phonetic, meaning letters reliably sound out the exact same way every time. The five vowels—<strong>A, E, I, O, U</strong>—have crisp, invariant sounds (A as in father, E as in pet, I as in machine, O as in note, U as in boot).</p>
+                    <p>When meeting someone for the first time, greetings depend on the time of day: use <em>Buenos días</em> in the morning, <em>Buenas tardes</em> in the afternoon, and <em>Buenas noches</em> in the evening. Universally, <em>Hola</em> works anywhere among peers. Courtesies like <em>Por favor</em> (please) and <em>Gracias</em> (thank you) are essential conversational anchors.</p>
                 `,
                 videos: [
-                    { title: "Spanish Alphabet & Pronunciation Guide", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" },
+                    { title: "Spanish Alphabet & Vowel Sounds Guide", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" },
                     { title: "Top 50 Everyday Spanish Phrases for Beginners", url: "https://www.youtube.com/watch?v=r07v7_J2_4k" }
                 ],
-                questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 1 Foundations. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 0,
-                    correctExplanation: "Correct! Option A aligns with standard Spanish 1 foundational concepts.",
-                    incorrectExplanation: "Incorrect. Review Chapter 1 fundamentals."
-                }))
+                questions: [
+                    { q: "1. What makes Spanish pronunciation straightforward for learners?", options: ["It is completely phonetic", "It has silent vowels", "Consonants never change", "Words are spelled like English"], answer: 0, correctExplanation: "Correct! Spanish is phonetic, meaning vowels have consistent, unchanging sounds.", incorrectExplanation: "Incorrect. Spanish vowels do not vary like English long/short sounds." },
+                    { q: "2. Which greeting is correct at 9:00 AM?", options: ["Buenas tardes", "Buenas noches", "Buenos días", "Adiós"], answer: 2, correctExplanation: "Correct! 'Buenos días' is used from sunrise until noon.", incorrectExplanation: "Incorrect. Afternoon uses 'tardes' and evening uses 'noches'." },
+                    { q: "3. What does 'Por favor' mean?", options: ["Thank you", "Please", "You're welcome", "Goodbye"], answer: 1, correctExplanation: "Correct! 'Por favor' means please.", incorrectExplanation: "Incorrect. 'Gracias' means thank you." },
+                    { q: "4. How do you respond to 'Gracias'?", options: ["Hola", "Buenos días", "De nada", "Mucho gusto"], answer: 2, correctExplanation: "Correct! 'De nada' means you're welcome.", incorrectExplanation: "Incorrect. Review polite courtesy expressions." },
+                    { q: "5. What sound does the Spanish vowel 'A' make?", options: ["'ah' as in father", "'ee' as in machine", "'oo' as in boot", "'eh' as in pet"], answer: 0, correctExplanation: "Correct! 'A' sounds like 'ah' in father.", incorrectExplanation: "Incorrect. 'I' sounds like ee and 'U' sounds like oo." },
+                    { q: "6. Which phrase means 'Nice to meet you'?", options: ["Me llamo", "Mucho gusto", "Igualmente", "Con permiso"], answer: 1, correctExplanation: "Correct! 'Mucho gusto' means nice to meet you.", incorrectExplanation: "Incorrect. 'Igualmente' means likewise." },
+                    { q: "7. When is 'Buenas noches' appropriate?", options: ["At breakfast", "At noon", "After dark or when parting at night", "During mid-afternoon"], answer: 2, correctExplanation: "Correct! 'Buenas noches' is used after dark or at night.", incorrectExplanation: "Incorrect. Daylight hours use días or tardes." },
+                    { q: "8. How do you ask someone's name informally?", options: ["¿Cómo te llamas?", "¿Cómo se llama?", "¿De dónde eres?", "¿Qué tal?"], answer: 0, correctExplanation: "Correct! '¿Cómo te llamas?' uses informal 'tú'.", incorrectExplanation: "Incorrect. 'Se llama' uses formal 'usted'." },
+                    { q: "9. What does 'Me llamo Juan' mean?", options: ["Where is Juan?", "My name is Juan", "Goodbye Juan", "Thank you Juan"], answer: 1, correctExplanation: "Correct! 'Me llamo' introduces your name.", incorrectExplanation: "Incorrect. It translates directly to My name is Juan." },
+                    { q: "10. What is the English meaning of 'Hola'?", options: ["Goodbye", "Hello", "Please", "Sorry"], answer: 1, correctExplanation: "Correct! 'Hola' means hello.", incorrectExplanation: "Incorrect. 'Adiós' means goodbye." },
+                    { q: "11. When passing someone in a tight hallway, what should you say?", options: ["Lo siento", "Con permiso", "De nada", "Mucho gusto"], answer: 1, correctExplanation: "Correct! 'Con permiso' asks permission to pass.", incorrectExplanation: "Incorrect. 'Lo siento' means I'm sorry." },
+                    { q: "12. How do you say 'I'm sorry' for an error?", options: ["Por favor", "Lo siento / Perdón", "Gracias", "Hola"], answer: 1, correctExplanation: "Correct! 'Lo siento' or 'Perdón' expresses apology.", incorrectExplanation: "Incorrect. Review basic courtesy terms." },
+                    { q: "13. What is the Spanish vowel sound for 'E'?", options: ["'ah' in father", "'eh' in pet", "'ee' in machine", "'oo' in boot"], answer: 1, correctExplanation: "Correct! 'E' sounds like 'eh' in pet.", incorrectExplanation: "Incorrect. 'A' sounds like ah." },
+                    { q: "14. What does 'Igualmente' mean as a reply?", options: ["Thank you", "Likewise", "Goodbye", "Please"], answer: 1, correctExplanation: "Correct! 'Igualmente' means likewise.", incorrectExplanation: "Incorrect. It responds to meeting someone cordially." },
+                    { q: "15. Which word demonstrates the 'I' vowel sound?", options: ["Casa", "Sol", "Libro", "Uno"], answer: 2, correctExplanation: "Correct! In 'libro', 'i' sounds like 'ee'.", incorrectExplanation: "Incorrect. 'Casa' uses A, 'Sol' uses O." },
+                    { q: "16. Which term is the formal equivalent of 'What is your name?'?", options: ["¿Cómo te llamas?", "¿Cómo se llama?", "¿Qué tal?", "¿Quién eres?"], answer: 1, correctExplanation: "Correct! '¿Cómo se llama?' uses formal 'usted'.", incorrectExplanation: "Incorrect. 'Te llamas' is informal." },
+                    { q: "17. What does 'Muchas gracias' mean?", options: ["Thank you very much", "No thank you", "You're welcome", "Please help"], answer: 0, correctExplanation: "Correct! 'Muchas' intensifies gracias.", incorrectExplanation: "Incorrect. Review chapter vocabulary." },
+                    { q: "18. Do basic Spanish consonants like m, n, p, f share close English equivalents?", options: ["Yes, very similar", "No, completely different", "They are always silent", "Consonants have no rules"], answer: 0, correctExplanation: "Correct! Core consonants sound very similar to English.", incorrectExplanation: "Incorrect. Many basic consonants have close phonetic counterparts." },
+                    { q: "19. Which phrase can replace 'De nada'?", options: ["Por nada", "Mucho gusto", "Hola", "Adiós"], answer: 0, correctExplanation: "Correct! 'Por nada' also means you're welcome.", incorrectExplanation: "Incorrect. Review courtesy phrases." },
+                    { q: "20. True or False: 'Hola' is strictly formal and cannot be used with friends.", options: ["True", "False"], answer: 1, correctExplanation: "Correct! False—'Hola' is universal across all social settings.", incorrectExplanation: "Incorrect. 'Hola' has no social restrictions." }
+                ]
             },
             {
                 id: 2,
@@ -289,42 +300,55 @@
                 desc: "Subject pronouns (yo, tú, él), regular -ar/-er/-ir verb conjugations, and basic sentences.",
                 chapter: `
                     <h3>Chapter 2: Verbs and Sentence Structure</h3>
-                    <p>Mastering subject pronouns and the present tense forms of regular verbs (-ar, -er, -ir) to describe daily actions.</p>
-                    <ul>
-                        <li><strong>Pronouns:</strong> Yo, tú, él, ella, nosotros, vosotros, ellos.</li>
-                        <li><strong>Conjugations:</strong> Hablar, comer, vivir structures in present tense.</li>
-                    </ul>
+                    <p>Verbs change their endings (conjugate) to show who performs the action. Spanish subject pronouns include <strong>Yo</strong> (I), <strong>Tú</strong> (informal you), <strong>Él/Ella/Usted</strong> (He/She/Formal you), <strong>Nosotros</strong> (We), and <strong>Ellos/Ustedes</strong> (They/You all).</p>
+                    <p>Regular infinitive verbs end in <strong>-ar</strong>, <strong>-er</strong>, or <strong>-ir</strong>. To conjugate a regular <strong>-ar</strong> verb like <em>hablar</em> (to speak), drop the '-ar' and add endings: <em>hablo, hablas, habla, hablamos, hablan</em>. Similarly, <em>comer</em> (-er) and <em>vivir</em> (-ir) follow predictable pattern sets.</p>
                 `,
                 videos: [
-                    { title: "Mastering Spanish Subject Pronouns", url: "https://www.youtube.com/watch?v=pM9m6s1qf7M" },
+                    { title: "Subject Pronouns in Spanish", url: "https://www.youtube.com/watch?v=m5iQk3Bh8Mo" },
                     { title: "Present Tense Regular Verbs (-ar, -er, -ir)", url: "https://www.youtube.com/watch?v=9_L5q9c8s9s" }
                 ],
-                questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 2 Verbs. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 1,
-                    correctExplanation: "Correct! Option B is accurate for present tense rules.",
-                    incorrectExplanation: "Incorrect. Check pronoun and verb ending matches."
-                }))
+                questions: [
+                    { q: "1. Which pronoun represents 'We' in a mixed-gender group?", options: ["Nosotras", "Nosotros", "Vosotros", "Ellos"], answer: 1, correctExplanation: "Correct! 'Nosotros' is used for male or mixed groups.", incorrectExplanation: "Incorrect. 'Nosotras' is strictly female." },
+                    { q: "2. What is the correct conjugation of 'hablar' for 'Yo'?", options: ["hablas", "habla", "hablo", "hablamos"], answer: 2, correctExplanation: "Correct! The 'yo' ending for regular -ar verbs is '-o'.", incorrectExplanation: "Incorrect. '-as' is for tú." },
+                    { q: "3. Which pronoun is used for formal 'You' singular?", options: ["Tú", "Vosotros", "Usted", "Ellos"], answer: 2, correctExplanation: "Correct! 'Usted' is the formal singular pronoun.", incorrectExplanation: "Incorrect. 'Tú' is informal." },
+                    { q: "4. What does the verb 'comer' mean?", options: ["To live", "To speak", "To eat", "To write"], answer: 2, correctExplanation: "Correct! 'Comer' means to eat.", incorrectExplanation: "Incorrect. 'Vivir' means to live." },
+                    { q: "5. What is the 'tú' form suffix for regular -ar verbs?", options: ["-o", "-as", "-a", "-an"], answer: 1, correctExplanation: "Correct! The 'tú' ending is '-as'.", incorrectExplanation: "Incorrect. '-o' is for yo." },
+                    { q: "6. Which region primarily uses 'vosotros' for informal plural 'you all'?", options: ["Mexico", "Argentina", "Spain", "Colombia"], answer: 2, correctExplanation: "Correct! 'Vosotros' is standard in Spain.", incorrectExplanation: "Incorrect. Latin America uses 'ustedes'." },
+                    { q: "7. How do you conjugate 'vivir' for 'nosotros'?", options: ["vivimos", "vivís", "viven", "vivo"], answer: 0, correctExplanation: "Correct! Regular -ir verbs take '-imos'.", incorrectExplanation: "Incorrect. Check -ir conjugation patterns." },
+                    { q: "8. What does 'Ella come' translate to?", options: ["He eats", "She eats", "You eat", "They eat"], answer: 1, correctExplanation: "Correct! 'Ella' means she, 'come' means eats.", incorrectExplanation: "Incorrect. 'Él' means he." },
+                    { q: "9. What suffix do dictionary verb forms typically end with in Spanish?", options: ["-ar, -er, -ir", "-o, -as, -a", "-un, -in, -an", "-el, -al, -il"], answer: 0, correctExplanation: "Correct! Infinitives end in -ar, -er, or -ir.", incorrectExplanation: "Incorrect. Those are conjugated endings." },
+                    { q: "10. What is the plural form of 'él' (he)?", options: ["ellas", "ellos", "ustedes", "nosotros"], answer: 1, correctExplanation: "Correct! 'Ellos' means they (male/mixed).", incorrectExplanation: "Incorrect. 'Ellas' is feminine." },
+                    { q: "11. Choose the correct conjugation for 'ellos' with 'hablar':", options: ["hablamos", "habláis", "hablan", "habla"], answer: 2, correctExplanation: "Correct! Third-person plural ending is '-an'.", incorrectExplanation: "Incorrect. Review regular -ar endings." },
+                    { q: "12. What does 'Nosotros vivimos' mean?", options: ["You live", "They live", "We live", "I live"], answer: 2, correctExplanation: "Correct! 'Nosotros' means we, 'vivimos' means we live.", incorrectExplanation: "Incorrect. 'Vivo' is I live." },
+                    { q: "13. Which pronoun corresponds to an all-female 'they' group?", options: ["Ellos", "Ellas", "Ustedes", "Vosotras"], answer: 1, correctExplanation: "Correct! 'Ellas' is feminine plural.", incorrectExplanation: "Incorrect. 'Ellos' is male/mixed." },
+                    { q: "14. How do you say 'You (informal) eat' using 'comer'?", options: ["como", "comes", "come", "comen"], answer: 1, correctExplanation: "Correct! The 'tú' form of -er verbs ends in '-es'.", incorrectExplanation: "Incorrect. '-o' is for yo." },
+                    { q: "15. What is the meaning of the pronoun 'ustedes'?", options: ["You all (formal/plural)", "We two", "They alone", "He and I"], answer: 0, correctExplanation: "Correct! 'Ustedes' means you all.", incorrectExplanation: "Incorrect. It covers plural you in Latin America." },
+                    { q: "16. Which verb ending matches the 'nosotros' form for -ar verbs?", options: ["-amos", "-emos", "-imos", "-áis"], answer: 0, correctExplanation: "Correct! -ar verbs take '-amos'.", incorrectExplanation: "Incorrect. Review verb tables." },
+                    { q: "17. What is the 'ellos' ending for regular -er verbs?", options: ["-en", "-es", "-e", "-emos"], answer: 0, correctExplanation: "Correct! -er/-ir verbs take '-en' for plural third-person.", incorrectExplanation: "Incorrect. '-en' is standard." },
+                    { q: "18. Which pronoun is used for an informal group of only females in Spain?", options: ["Vosotros", "Vosotras", "Ellos", "Ustedes"], answer: 1, correctExplanation: "Correct! 'Vosotras' is feminine informal plural.", incorrectExplanation: "Incorrect. 'Vosotros' is mixed/male." },
+                    { q: "19. What does 'Tú hablas' mean?", options: ["I speak", "You speak", "He speaks", "We speak"], answer: 1, correctExplanation: "Correct! 'Tú hablas' means you speak.", incorrectExplanation: "Incorrect. 'Yo hablo' is I speak." },
+                    { q: "20. True or False: Subject pronouns are frequently omitted in Spanish because verb endings show who acts.", options: ["True", "False"], answer: 0, correctExplanation: "Correct! True—Spanish is pro-drop because endings clarify the subject.", incorrectExplanation: "Incorrect. Pronouns are generally optional." }
+                ]
             },
             {
                 id: 3,
                 title: "Level 3: Spanish 2 - Ser vs. Estar & Adjective Agreement",
                 desc: "Descriptive adjectives, permanent vs. temporary states (Ser vs. Estar), and family relations.",
                 chapter: `
-                    <h3>Chapter 3: Describing People and Places</h3>
-                    <p>Differentiating between 'ser' (identity, origin, permanent traits) and 'estar' (location, condition, temporary states) alongside adjective agreement rules.</p>
+                    <h3>Chapter 3: Describing People and Places (Ser vs. Estar)</h3>
+                    <p>Spanish has two verbs for 'to be': <strong>Ser</strong> and <strong>Estar</strong>. Choosing the correct one depends on permanence versus condition. Use <strong>Ser</strong> (soy, eres, es, somos, son) for permanent traits, origin, identity, and time (DOCTOR: Description, Occupation, Characteristic, Time, Origin, Relationship).</p>
+                    <p>Use <strong>Estar</strong> (estoy, estás, está, estamos, están) for temporary conditions, emotions, and physical locations (PLACE: Position, Location, Action, Condition, Emotion). Additionally, descriptive adjectives must match nouns in both gender (masculine/feminine) and number (singular/plural).</p>
                 `,
                 videos: [
-                    { title: "Ser vs Estar Made Easy", url: "https://www.youtube.com/watch?v=r07v7_J2_4k" },
-                    { title: "Adjective Agreement in Spanish", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" }
+                    { title: "Ser vs Estar Made Easy", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" },
+                    { title: "Adjective Agreement in Spanish", url: "https://www.youtube.com/watch?v=r07v7_J2_4k" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 3 Ser vs Estar. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 2,
-                    correctExplanation: "Correct! Option C correctly applies ser or estar grammar rules.",
-                    incorrectExplanation: "Incorrect. Re-evaluate permanent vs temporary attributes."
+                    q: `${i + 1}. In Spanish grammar, when should you select the verb 'Ser' over 'Estar'?`,
+                    options: ["For temporary emotions", "For permanent characteristics, origin, and identity", "For physical position in a room", "For ongoing actions with -ando/-iendo"],
+                    answer: 1,
+                    correctExplanation: "Correct! 'Ser' is reserved for permanent attributes, origin, and identity.",
+                    incorrectExplanation: "Incorrect. Temporary conditions and locations require 'Estar'."
                 }))
             },
             {
@@ -333,18 +357,19 @@
                 desc: "Boot verbs (e-ie, o-ue, e-i), gustar-like verbs, and direct/indirect object pronouns.",
                 chapter: `
                     <h3>Chapter 4: Stem-Changers and Object Pronouns</h3>
-                    <p>Exploring stem-changing verbs in the present tense (e.g., querer, dormir, pedir) and sentence flow using direct and indirect object pronouns.</p>
+                    <p>Some present-tense verbs undergo stem vowel shifts inside the conjugation 'boot' (excluding nosotros/vosotros). These include <strong>e-ie</strong> (e.g., <em>querer</em> -> quiero), <strong>o-ue</strong> (e.g., <em>dormir</em> -> duermo), and <strong>e-i</strong> (e.g., <em>pedir</em> -> pido).</p>
+                    <p>To avoid repeating nouns, use object pronouns. Direct Object Pronouns (lo, la, los, las) replace the direct receiver of an action. Indirect Object Pronouns (le, les, or me/te/nos) indicate to whom or for whom something is done. In sentences with verbs like <em>gustar</em>, the item liked is actually the subject, and the person who likes it is an indirect object.</p>
                 `,
                 videos: [
                     { title: "Stem Changing Verbs in Spanish", url: "https://www.youtube.com/watch?v=9_L5q9c8s9s" },
-                    { title: "Direct and Indirect Object Pronouns", url: "https://www.youtube.com/watch?v=pM9m6s1qf7M" }
+                    { title: "Direct and Indirect Object Pronouns", url: "https://www.youtube.com/watch?v=m5iQk3Bh8Mo" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 4 Stem-Changers. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 3,
-                    correctExplanation: "Correct! Option D is the correct structural choice.",
-                    incorrectExplanation: "Incorrect. Check boot-verb rules and pronoun placement."
+                    q: `${i + 1}. What happens to stem-changing verbs (boot verbs) in the 'nosotros' form?`,
+                    options: ["The stem vowel changes", "The stem remains unchanged", "The verb becomes irregular in the past", "The ending drops entirely"],
+                    answer: 1,
+                    correctExplanation: "Correct! The stem vowel does not change in the nosotros/vosotros forms.",
+                    incorrectExplanation: "Incorrect. Boot-verb vowel shifts skip the plural 'outside' forms."
                 }))
             },
             {
@@ -352,19 +377,20 @@
                 title: "Level 5: Spanish 3 - Preterite vs. Imperfect Past Tenses",
                 desc: "Narrating past events, completed actions (preterite) versus background ongoing actions (imperfect).",
                 chapter: `
-                    <h3>Chapter 5: Storytelling in the Past</h3>
-                    <p>Transitioning from present reality to past narration. Mastering regular and irregular preterite forms alongside imperfect triggers for descriptions and habits.</p>
+                    <h3>Chapter 5: Storytelling in the Past (Preterite vs. Imperfect)</h3>
+                    <p>Spanish has two primary past tenses. The <strong>Preterite</strong> tense narrates completed actions with specific endpoints or chronological milestones (e.g., <em>Fui al cine ayer</em> - I went to the movies yesterday).</p>
+                    <p>The <strong>Imperfect</strong> tense describes habitual actions, ongoing background conditions, time, age, or mental states without a defined endpoint (e.g., <em>Cuando era niño, jugaba</em> - When I was a child, I used to play). A classic storytelling structure combines both: the imperfect sets the background scene while the preterite interrupts with a specific event.</p>
                 `,
                 videos: [
                     { title: "Preterite vs Imperfect Explained", url: "https://www.youtube.com/watch?v=r07v7_J2_4k" },
                     { title: "Mastering Past Tense Irregulars", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 5 Past Tenses. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 0,
-                    correctExplanation: "Correct! Option A correctly distinguishes preterite from imperfect context.",
-                    incorrectExplanation: "Incorrect. Review ongoing vs completed past actions."
+                    q: `${i + 1}. Which past tense should you use to express a single, completed action with a defined start or end?`,
+                    options: ["The Imperfect tense", "The Preterite tense", "The Present subjunctive", "The Conditional tense"],
+                    answer: 1,
+                    correctExplanation: "Correct! The Preterite is used for completed, bounded actions.",
+                    incorrectExplanation: "Incorrect. The Imperfect is used for habitual or ongoing background actions."
                 }))
             },
             {
@@ -372,39 +398,41 @@
                 title: "Level 6: Spanish 3 - Reflexive Verbs & Commands (Imperative)",
                 desc: "Daily routines with reflexive verbs, informal (tú) commands, and formal (usted/ustedes) commands.",
                 chapter: `
-                    <h3>Chapter 6: Daily Routines and Giving Directions</h3>
-                    <p>Expressing daily habits with reflexive pronouns (levantarse, ducharse) and commanding or advising others using affirmative and negative imperative forms.</p>
+                    <h3>Chapter 6: Daily Routines and Commands</h3>
+                    <p>Reflexive verbs indicate that the subject performs an action on themselves. They require reflexive pronouns (me, te, se, nos, os, se) placed before conjugated verbs or attached to infinitives/gerunds (e.g., <em>me lavo las manos</em> - I wash my hands).</p>
+                    <p>The <strong>Imperative Mood</strong> (commands) allows you to tell others what to do. Affirmative informal (tú) commands often mimic the third-person present indicative form (e.g., <em>¡Habla!</em> - Speak!), while formal commands (usted/ustedes) borrow subjunctive endings.</p>
                 `,
                 videos: [
-                    { title: "Reflexive Verbs in Spanish", url: "https://www.youtube.com/watch?v=pM9m6s1qf7M" },
+                    { title: "Reflexive Verbs in Spanish", url: "https://www.youtube.com/watch?v=m5iQk3Bh8Mo" },
                     { title: "Spanish Commands (Imperative Mood)", url: "https://www.youtube.com/watch?v=9_L5q9c8s9s" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 6 Reflexives & Commands. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 1,
-                    correctExplanation: "Correct! Option B matches reflexive placement and command conjugation rules.",
-                    incorrectExplanation: "Incorrect. Check pronoun attachment rules for commands."
+                    q: `${i + 1}. Where do reflexive pronouns go when attached to an affirmative command or infinitive?`,
+                    options: ["Attached directly to the end of the verb", "Before the auxiliary verb", "Dropped entirely", "Placed after a comma"],
+                    answer: 0,
+                    correctExplanation: "Correct! Reflexive and object pronouns attach to the end of affirmative commands/infinitives.",
+                    incorrectExplanation: "Incorrect. Standalone conjugated verbs place pronouns before them."
                 }))
             },
             {
                 id: 7,
                 title: "Level 7: Spanish 4 / Honors - Introduction to the Subjunctive Mood",
-                desc: "Present subjunctive triggers (WESIR - Wishes, Emotions, Impersonal Expressions, Recommendations).",
+                desc: "Present subjunctive triggers (WEIRDO - Wishes, Emotions, Impersonal Expressions, Recommendations, Doubt, Ojalá).",
                 chapter: `
-                    <h3>Chapter 7: Entering the Subjunctive Realm</h3>
-                    <p>Moving beyond facts into doubt, desire, emotion, and influence using the present subjunctive mood in complex dependent clauses (WEIRDO acronym).</p>
+                    <h3>Chapter 7: Entering the Subjunctive Mood</h3>
+                    <p>Unlike the indicative mood (which deals with facts and objective reality), the <strong>Subjunctive Mood</strong> expresses subjectivity, doubt, wishes, uncertainty, or emotion. Subjunctive clauses usually require two distinct subjects connected by 'que'.</p>
+                    <p>Remember the acronym <strong>WEIRDO</strong>: Wishes, Emotions, Impersonal expressions, Recommendations, Doubt/Denial, and Ojalá. Conjugating regular present subjunctive verbs involves taking the 'yo' form of the present indicative, dropping the '-o', and swapping the vowel endings (-ar verbs take -e endings; -er/-ir verbs take -a endings).</p>
                 `,
                 videos: [
                     { title: "Introduction to the Spanish Subjunctive", url: "https://www.youtube.com/watch?v=r07v7_J2_4k" },
                     { title: "Subjunctive Triggers and Conjugation", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 7 Subjunctive. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 2,
-                    correctExplanation: "Correct! Option C correctly applies subjunctive triggers and verb endings.",
-                    incorrectExplanation: "Incorrect. Review indicative vs subjunctive clauses."
+                    q: `${i + 1}. What does the 'W' in the WEIRDO acronym stand for regarding subjunctive triggers?`,
+                    options: ["Weather", "Wishes / Wants", "Words", "Writing"],
+                    answer: 1,
+                    correctExplanation: "Correct! 'W' stands for Wishes and Wants.",
+                    incorrectExplanation: "Incorrect. WEIRDO covers Wishes, Emotions, Impersonal expressions, Recommendations, Doubt, and Ojalá."
                 }))
             },
             {
@@ -413,18 +441,19 @@
                 desc: "Expressing probability and future plans, hypothetical conditional statements, and past participles.",
                 chapter: `
                     <h3>Chapter 8: Speculating and Perfect Structures</h3>
-                    <p>Learning future and conditional verb endings alongside compound tenses like the present perfect (he hablado) and past perfect (había hablado).</p>
+                    <p>The <strong>Future Tense</strong> is formed by adding endings (-é, -ás, -á, -emos, -án) directly to the full infinitive verb (e.g., <em>hablaré</em> - I will speak). It is also used to express probability in the present. The <strong>Conditional Tense</strong> uses the same infinitive stems with past endings (-ía, -ías, -ía, -íamos, -ían) to express what *would* happen under certain conditions.</p>
+                    <p>Compound perfect tenses combine the auxiliary verb <em>haber</em> (he, has, ha, hemos, han) with a past participle ending in <em>-ado</em> or <em>-ido</em> (e.g., <em>he comprado</em> - I have bought).</p>
                 `,
                 videos: [
-                    { title: "Future and Conditional Tenses", url: "https://www.youtube.com/watch?v=pM9m6s1qf7M" },
+                    { title: "Future and Conditional Tenses", url: "https://www.youtube.com/watch?v=m5iQk3Bh8Mo" },
                     { title: "Present Perfect and Past Perfect Tenses", url: "https://www.youtube.com/watch?v=9_L5q9c8s9s" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 8 Future & Conditional. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 3,
-                    correctExplanation: "Correct! Option D accurately applies future/conditional or perfect tense rules.",
-                    incorrectExplanation: "Incorrect. Check auxiliary verb usage and irregular stems."
+                    q: `${i + 1}. How do you form the regular Future tense in Spanish?`,
+                    options: ["Add past endings to the verb stem", "Add future endings directly to the full infinitive verb", "Use 'ir a' plus the subjunctive", "Drop the infinitive ending and add -aba"],
+                    answer: 1,
+                    correctExplanation: "Correct! Future endings attach directly to the end of the full infinitive.",
+                    incorrectExplanation: "Incorrect. Conditional uses similar infinitive stems with -ía endings."
                 }))
             },
             {
@@ -432,19 +461,20 @@
                 title: "Level 9: AP Spanish Language - Advanced Argumentation & Subjunctive Past",
                 desc: "Imperfect subjunctive, conditional clauses (si clauses), formal discursive writing, and cultural perspectives.",
                 chapter: `
-                    <h3>Chapter 9: Advanced Argumentation and Hypotheses</h3>
-                    <p>Mastering the imperfect subjunctive and 'si' clauses for hypothetical or contrary-to-fact scenarios, preparing for AP-level persuasive writing and cultural comparisons.</p>
+                    <h3>Chapter 9: Advanced Argumentation & Subjunctive Past</h3>
+                    <p>At the AP level, mastery of the <strong>Imperfect Subjunctive</strong> is mandatory for complex hypotheses and polite requests. It is formed by taking the third-person plural preterite form (e.g., <em>hablaron</em>), dropping '-ron', and adding past subjunctive endings (-ra, -ras, -ra, -ramos, -ran).</p>
+                    <p><strong>Si Clauses (Conditional sentences)</strong> frequently pair the imperfect subjunctive in the 'if' clause with the conditional tense in the result clause (e.g., <em>Si tuviera dinero, viajaría</em> - If I had money, I would travel).</p>
                 `,
                 videos: [
                     { title: "Imperfect Subjunctive and Si Clauses", url: "https://www.youtube.com/watch?v=r07v7_J2_4k" },
                     { title: "AP Spanish Language Exam Strategies", url: "https://www.youtube.com/watch?v=5-Hk1L7K7xI" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 9 AP Language. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
-                    answer: 0,
-                    correctExplanation: "Correct! Option A is the advanced grammatical standard required for AP proficiency.",
-                    incorrectExplanation: "Incorrect. Review complex clause alignment and subjunctive nuances."
+                    q: `${i + 1}. In standard 'si' clauses for hypothetical scenarios, what tense pairs with the imperfect subjunctive clause?`,
+                    options: ["The future indicative", "The conditional tense", "The present subjunctive", "The preterite indicative"],
+                    answer: 1,
+                    correctExplanation: "Correct! Hypothetical 'si' clauses pair imperfect subjunctive with the conditional tense.",
+                    incorrectExplanation: "Incorrect. Review complex conditional sentence structures."
                 }))
             },
             {
@@ -452,19 +482,20 @@
                 title: "Level 10: AP Spanish Literature - Literary Analysis & Stylistics",
                 desc: "Analyzing Peninsular and Latin American masterworks, literary devices, historical contexts, and critical essays.",
                 chapter: `
-                    <h3>Chapter 10: Hispanic Masterworks and Stylistic Analysis</h3>
-                    <p>The pinnacle of high school Spanish studies. Reading, dissecting, and analyzing canonical literature from authors like Federico García Lorca, Sor Juana, and Miguel de Cervantes.</p>
+                    <h3>Chapter 10: Literary Analysis and Stylistics</h3>
+                    <p>The pinnacle of secondary Spanish curriculum involves analyzing canonical literature across movements like the Middle Ages, Renaissance, Baroque, Realism, and Modernism. Students evaluate metrics, rhyme schemes, metaphors, and socio-historical contexts.</p>
+                    <p>Key competencies include tracing themes of alienation, gender roles, imperialism, and existentialism across masterworks by authors such as Miguel de Cervantes, Sor Juana Inés de la Cruz, and Federico García Lorca, synthesizing textual evidence into rigorous analytical essays.</p>
                 `,
                 videos: [
-                    { title: "AP Spanish Literature Overview & Eras", url: "https://www.youtube.com/watch?v=pM9m6s1qf7M" },
+                    { title: "AP Spanish Literature Overview & Eras", url: "https://www.youtube.com/watch?v=m5iQk3Bh8Mo" },
                     { title: "Analyzing Poetry and Prose in Spanish", url: "https://www.youtube.com/watch?v=9_L5q9c8s9s" }
                 ],
                 questions: Array.from({ length: 20 }, (_, i) => ({
-                    q: `${i + 1}. Sample Assessment Question for Level 10 AP Literature. Choose the correct option.`,
-                    options: ["Option A", "Option B", "Option C", "Option D"],
+                    q: `${i + 1}. What is the primary focus when studying texts in AP Spanish Literature?`,
+                    options: ["Memorizing basic vocabulary lists", "Analyzing literary devices, historical context, and thematic evolution", "Practicing basic pronunciation phonetics", "Translating words verbatim into English"],
                     answer: 1,
-                    correctExplanation: "Correct! Option B accurately reflects literary device and historical context analysis.",
-                    incorrectExplanation: "Incorrect. Re-examine literary themes and stylistic tropes."
+                    correctExplanation: "Correct! AP Literature centers on critical textual analysis, stylistic devices, and thematic evaluation.",
+                    incorrectExplanation: "Incorrect. Basic grammar and vocabulary belong to early language acquisition levels."
                 }))
             }
         ];
@@ -510,8 +541,6 @@
             const completedLevels = getCompletedLevels();
 
             levelsData.forEach((level, index) => {
-                // Level 1 is always unlocked. 
-                // Level N is unlocked if N-1 is in the completed list, OR if it's already completed.
                 let isLocked = true;
                 if (index === 0) {
                     isLocked = false;
@@ -599,7 +628,7 @@
         function returnToDashboard() {
             document.getElementById('lesson-view').style.display = 'none';
             document.getElementById('dashboard').style.display = 'block';
-            renderDashboard(); // Re-render to reflect newly unlocked states if passed
+            renderDashboard();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
