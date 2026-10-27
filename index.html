@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HablaFluido Academy - Comprehensive Spanish Curriculum</title>
+    <title>HablaFluido Academy - Comprehensive Spanish Curriculum with Visuals</title>
     <style>
         :root {
             --primary: #1e293b;
@@ -99,6 +99,81 @@
         }
         .curriculum-chapter h3 { color: var(--primary); margin-top: 0; }
         .curriculum-chapter h4 { color: var(--accent); margin-top: 20px; margin-bottom: 8px; }
+        
+        /* Graphical Elements & Diagrams inside Reading */
+        .diagram-box {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .diagram-title {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .flow-row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        .flow-node {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e40af;
+        }
+        .bar-chart-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 15px 0;
+            background: white;
+            padding: 15px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+        }
+        .bar-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+        }
+        .bar-label {
+            width: 130px;
+            text-align: right;
+            font-weight: 600;
+        }
+        .bar-track {
+            flex: 1;
+            background: #f1f5f9;
+            height: 18px;
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+        .bar-fill {
+            background: var(--accent);
+            height: 100%;
+            border-radius: 4px 0 0 4px;
+            display: flex;
+            align-items: center;
+            padding-left: 8px;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
         .curriculum-chapter table {
             width: 100%;
             border-collapse: collapse;
@@ -216,7 +291,7 @@
 
     <header>
         <h1>HablaFluido Academy</h1>
-        <p>In-Depth Curriculum, Recommended Video Guides, and 50-Question Comprehensive Assessments.</p>
+        <p>In-Depth Textbook Chapters with Visual Diagrams, Video Guides, and 50-Question Assessments.</p>
     </header>
 
     <div class="main-container">
@@ -256,7 +331,7 @@
             <div class="gate-box">
                 <p style="margin: 0 0 10px 0; font-weight: 600; color: #166534;">Prerequisite Verification:</p>
                 <label>
-                    <input type="checkbox" id="read-check" onchange="checkPrerequisites()"> I confirm I have thoroughly read the entire textbook chapter and reviewed the recommended video topics.
+                    <input type="checkbox" id="read-check" onchange="checkPrerequisites()"> I confirm I have thoroughly read the entire textbook chapter, reviewed the visual diagrams, and checked the video topics.
                 </label>
                 <button class="btn" id="unlock-quiz-btn" style="margin-top: 10px;" disabled onclick="revealQuiz()">Proceed to 50-Question Assessment</button>
             </div>
@@ -281,16 +356,36 @@
                 desc: "Complete guide to Spanish phonetics, vowel consistency, greetings, courtesy, numbers 1-100, and classroom nouns.",
                 chapter: `
                     <h3>Chapter 1: Deep Dive into Spanish Phonetics and Basic Greetings</h3>
-                    <p>Spanish is a phonetic language spoken by over 500 million people worldwide. Unlike English, where vowels can shift dramatically, Spanish vowels are <strong>strictly invariant</strong>. Each of the five vowels maintains one crisp, short sound:</p>
-                    <ul>
-                        <li><strong>A [ah]:</strong> Pronounced like 'ah' in <em>father</em> (e.g., <em>casa</em>).</li>
-                        <li><strong>E [eh]:</strong> Pronounced like 'eh' in <em>pet</em> (e.g., <em>bebé</em>).</li>
-                        <li><strong>I [ee]:</strong> Pronounced like 'ee' in <em>machine</em> (e.g., <em>libro</em>).</li>
-                        <li><strong>O [oh]:</strong> Pronounced like 'oh' in <em>note</em> (e.g., <em>sol</em>).</li>
-                        <li><strong>U [oo]:</strong> Pronounced like 'oo' in <em>boot</em> (e.g., <em>uno</em>). Note: 'H' is always silent in Spanish.</li>
-                    </ul>
-                    <h4>Greetings & Time-of-Day Customs</h4>
-                    <p>Use <em>Buenos días</em> in the morning, <em>Buenas tardes</em> in the afternoon, and <em>Buenas noches</em> in the evening. Universally, <em>Hola</em> works anywhere among peers.</p>
+                    <p>Spanish is a phonetic language spoken by over 500 million people worldwide. Unlike English, Spanish vowels are <strong>strictly invariant</strong>. Each of the five vowels maintains one crisp, short sound:</p>
+                    
+                    <div class="diagram-box">
+                        <div class="diagram-title">Visual Map: The 5 Invariant Spanish Vowel Sounds</div>
+                        <div class="flow-row">
+                            <div class="flow-node">A = [ah] (father)</div>
+                            <div class="flow-node">E = [eh] (pet)</div>
+                            <div class="flow-node">I = [ee] (machine)</div>
+                            <div class="flow-node">O = [oh] (note)</div>
+                            <div class="flow-node">U = [oo] (boot)</div>
+                        </div>
+                    </div>
+
+                    <p>Note: The letter <strong>'H'</strong> is always completely silent in standard Spanish orthography.</p>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Time-of-Day Greeting Usage Distribution</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Buenos días</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 35%;">Sunrise - 12 PM</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Buenas tardes</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 45%; background: #2563eb;">12 PM - Sunset</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Buenas noches</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 20%; background: #1e293b;">Sunset - Night</div></div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "THE SPANISH ALPHABET - Letters and Their Sounds", creator: "Butterfly Spanish", summary: "Detailed breakdown of all 27 Spanish letters and exact vowel pronunciation guides." },
@@ -357,6 +452,36 @@
                 chapter: `
                     <h3>Chapter 2: Pronouns and Regular Present Tense Conjugation</h3>
                     <p>In Spanish, verbs are conjugated by dropping the infinitive ending (<strong>-ar</strong>, <strong>-er</strong>, or <strong>-ir</strong>) and attaching specific endings that reveal who performs the action.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Visual Diagram: Subject Pronoun Grid</div>
+                        <div class="flow-row">
+                            <div class="flow-node">Yo (I)</div>
+                            <div class="flow-node">Tú (You inf.) / Usted (You form.)</div>
+                            <div class="flow-node">Él / Ella (He / She)</div>
+                        </div>
+                        <div class="flow-row" style="margin-top: 5px;">
+                            <div class="flow-node">Nosotros (We)</div>
+                            <div class="flow-node">Vosotros (You all Spain)</div>
+                            <div class="flow-node">Ellos / Ustedes (They / You all)</div>
+                        </div>
+                    </div>
+
+                    <div class="bar-chart-container">
+                        <div class="diagram-title">Graph: Regular Verb Ending Suffix Distribution (-o, -as/-es, -a/-e)</div>
+                        <div class="bar-row">
+                            <div class="bar-label">Yo (All verbs)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 20%;">Ends in -O</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Tú (-ar / -er/-ir)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 35%; background: #2563eb;">-as / -es</div></div>
+                        </div>
+                        <div class="bar-row">
+                            <div class="bar-label">Él/Ella (-ar / -er/-ir)</div>
+                            <div class="bar-track"><div class="bar-fill" style="width: 25%; background: #16a34a;">-a / -e</div></div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Subject Pronouns in Spanish Explained", creator: "The Spanish Dude", summary: "Breaks down singular vs plural, formal vs informal usage." },
@@ -423,6 +548,14 @@
                 chapter: `
                     <h3>Chapter 3: Mastering Ser vs. Estar and Adjectives</h3>
                     <p>Spanish utilizes two separate verbs for English 'to be': <strong>Ser</strong> and <strong>Estar</strong>. Use <strong>Ser</strong> for permanent traits (DOCTOR) and <strong>Estar</strong> for temporary states and locations (PLACE).</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: Ser (Permanent) vs. Estar (Temporary)</div>
+                        <div class="flow-row">
+                            <div class="flow-node" style="background:#fef2f2; color:#991b1b; border-color:#fecaca;">SER = DOCTOR (Origin, Identity, Traits)</div>
+                            <div class="flow-node" style="background:#f0fdf4; color:#166534; border-color:#bbf7d0;">ESTAR = PLACE (Position, Location, Emotion)</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Ser vs Estar: When to use 'To Be' in Spanish", creator: "Butterfly Spanish", summary: "Comprehensive explanation of DOCTOR and PLACE rules." },
@@ -489,6 +622,20 @@
                 chapter: `
                     <h3>Chapter 4: Stem-Changers, Direct & Indirect Object Pronouns</h3>
                     <p>Certain verbs undergo a vowel change in their stem during present tense conjugation (boot verbs). Object pronouns replace nouns to streamline sentences.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Visual Map: The Conjugation Boot Shape (Excluding Nosotros/Vosotros)</div>
+                        <div class="flow-row">
+                            <div class="flow-node" style="background:#fee2e2; color:#991b1b;">Yo (Changes)</div>
+                            <div class="flow-node" style="background:#fee2e2; color:#991b1b;">Tú (Changes)</div>
+                            <div class="flow-node" style="background:#fee2e2; color:#991b1b;">Él/Ella (Changes)</div>
+                        </div>
+                        <div class="flow-row" style="margin-top: 5px;">
+                            <div class="flow-node" style="background:#f1f5f9; color:#64748b;">Nosotros (NO change)</div>
+                            <div class="flow-node" style="background:#f1f5f9; color:#64748b;">Vosotros (NO change)</div>
+                            <div class="flow-node" style="background:#fee2e2; color:#991b1b;">Ellos (Changes)</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Stem Changing Verbs in Present Tense (Boot Verbs)", creator: "Señor Jordan", summary: "Visual breakdown of the boot shape concept." },
@@ -555,6 +702,14 @@
                 chapter: `
                     <h3>Chapter 5: Storytelling with Preterite and Imperfect</h3>
                     <p>Spanish features two past tenses. The <strong>Preterite</strong> narrates completed actions with specific endpoints, while the <strong>Imperfect</strong> describes habitual routines, ongoing background conditions, and time.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: Preterite (Dot on Timeline) vs. Imperfect (Continuous Wave)</div>
+                        <div class="flow-row">
+                            <div class="flow-node" style="background:#eff6ff;">Preterite: [•] Single event / milestone</div>
+                            <div class="flow-node" style="background:#f0fdf4;">Imperfect: [~~~~] Background / Habitual / Age</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Preterite vs Imperfect: The Ultimate Guide", creator: "Butterfly Spanish", summary: "Clear breakdown with contrast examples." },
@@ -621,6 +776,16 @@
                 chapter: `
                     <h3>Chapter 6: Reflexive Actions and Giving Commands</h3>
                     <p>Reflexive verbs indicate that the subject performs an action on themselves using pronouns (me, te, se, nos, os, se). Commands (Imperative) tell others what to do.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: Reflexive Pronoun Flow</div>
+                        <div class="flow-row">
+                            <div class="flow-node">Yo -> me</div>
+                            <div class="flow-node">Tú -> te</div>
+                            <div class="flow-node">Él/Ella -> se</div>
+                            <div class="flow-node">Nosotros -> nos</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Reflexive Verbs in Spanish Guide", creator: "Butterfly Spanish", summary: "Comprehensive lesson on daily routine verbs and reflexive pronoun positions." },
@@ -685,8 +850,20 @@
                 title: "Level 7: Spanish 4 / Honors - Introduction to Subjunctive Mood",
                 desc: "Present subjunctive mechanics, clause dependency with 'que', and the WEIRDO acronym.",
                 chapter: `
-                    <h3>Chapter 7: Entering the Subjunctive Mood</h3>
+                    <h3>Chapter 7: Entering the Subjunctive Realm</h3>
                     <p>The <strong>Subjunctive Mood</strong> expresses subjective reality—hopes, doubts, hypothetical situations, recommendations, and emotional reactions rather than objective facts. Remember <strong>WEIRDO</strong>.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: The WEIRDO Subjunctive Trigger Acronym</div>
+                        <div class="flow-row">
+                            <div class="flow-node">W - Wishes</div>
+                            <div class="flow-node">E - Emotions</div>
+                            <div class="flow-node">I - Impersonal</div>
+                            <div class="flow-node">R - Recommendations</div>
+                            <div class="flow-node">D - Doubt</div>
+                            <div class="flow-node">O - Ojalá</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Understanding the Subjunctive Mood in Spanish", creator: "Butterfly Spanish", summary: "In-depth guide explaining indicative vs subjunctive mindsets." },
@@ -740,7 +917,7 @@
                     { q: "44. What is the subjunctive form of 'hacer' for 'yo'?", options: ["haga", "hago", "hiciera", "haré"], answer: 0, correctExplanation: "Correct! Yo hago -> haga in subjunctive.", incorrectExplanation: "Incorrect. Hago is indicative." },
                     { q: "45. What does 'A menos que' mean and what mood does it trigger?", options: ["Unless / triggers Subjunctive", "Although / triggers Indicative", "Because / triggers Indicative", "When / triggers Subjunctive conditionally"], answer: 0, correctExplanation: "Correct! 'A menos que' (unless) always triggers subjunctive.", incorrectExplanation: "Incorrect. It mandates subjunctive." },
                     { q: "46. What does 'Sin que' mean and what mood does it trigger?", options: ["Without / triggers Subjunctive", "With / triggers Indicative", "Before / triggers Indicative", "After / triggers Indicative"], answer: 0, correctExplanation: "Correct! 'Sin que' (without) always triggers subjunctive.", incorrectExplanation: "Incorrect. It requires subjunctive." },
-                    { q: "47. How do you say 'Call me when you arrive' if arrival is in an uncertain future?", options: ["Llámame cuando llegas", "Llámame cuando llegues", "Llámame cuando llegaste", "Llámame cuando llegarás"], answer: 1, correctExplanation: "Correct! Time conjunctions (cuando) take subjunctive when referring to anticipated future events ('llegues').", incorrectExplanation: "Incorrect. Llegas is present indicative for habitual actions." },
+                    { q: "47. How do you say 'Call me when you arrive' if arrival is in an uncertain future?", options: ["Llámame cuando llegas", "Llámame cuando llegues", "Llámame cuando llegaste", "Llámame когда llegarás"], answer: 1, correctExplanation: "Correct! Time conjunctions (cuando) take subjunctive when referring to anticipated future events ('llegues').", incorrectExplanation: "Incorrect. Llegas is present indicative for habitual actions." },
                     { q: "48. How do you say 'Call me when you arrive (every time you habitually arrive)'?", options: ["Llámame cuando llegas", "Llámame cuando llegues", "Llámame cuando llegaste", "Llámame cuando llegarás"], answer: 0, correctExplanation: "Correct! Habitual routine uses indicative ('llegas').", incorrectExplanation: "Incorrect. Subjunctive implies future anticipation." },
                     { q: "49. True or False: The subjunctive mood has its own past, present, and future tenses.", options: ["True", "False"], answer: 0, correctExplanation: "Correct! True—the subjunctive mood includes present, imperfect, present perfect, and pluperfect subjunctive tenses.", incorrectExplanation: "Incorrect. Subjunctive features multiple tense variations." },
                     { q: "50. What is the ultimate purpose of mastering the subjunctive mood in Spanish?", options: ["To express doubt, emotion, influence, and hypothesis beyond simple facts", "To conjugate regular -ar verbs in the past", "To state dates and times", "To tell someone's name"], answer: 0, correctExplanation: "Correct! Subjunctive elevates Spanish expression into nuanced emotional and hypothetical discourse.", incorrectExplanation: "Incorrect. Basic facts use indicative." }
@@ -753,6 +930,15 @@
                 chapter: `
                     <h3>Chapter 8: Speculation, Future, and Perfect Tenses</h3>
                     <p>The <strong>Future Tense</strong> uses infinitive + endings (-é, -ás...). The <strong>Conditional Tense</strong> uses infinitive + endings (-ía, -ías...). Perfect tenses use Haber + Participle.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: Compound Tense Assembly (Haber + Past Participle)</div>
+                        <div class="flow-row">
+                            <div class="flow-node">Haber (he/has/ha...)</div>
+                            <div class="flow-node">+</div>
+                            <div class="flow-node">Participle (-ado / -ido)</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Simple Future and Conditional Tenses", creator: "Butterfly Spanish", summary: "Covers future certainty and conditional hypotheticals." },
@@ -819,6 +1005,15 @@
                 chapter: `
                     <h3>Chapter 9: Advanced Argumentation and Hypotheses</h3>
                     <p>Mastering the imperfect subjunctive and 'si' clauses for hypothetical or contrary-to-fact scenarios, preparing for AP-level persuasive writing.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: Contrary-to-Fact Si Clause Formula</div>
+                        <div class="flow-row">
+                            <div class="flow-node">Si + Imperfect Subjunctive (-ra)</div>
+                            <div class="flow-node">→</div>
+                            <div class="flow-node">Conditional Result (-ía)</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "Imperfect Subjunctive and Si Clauses", creator: "Butterfly Spanish", summary: "Imperfect subjunctive derivation from preterite stems." },
@@ -885,6 +1080,15 @@
                 chapter: `
                     <h3>Chapter 10: Literary Analysis and Hispanic Masterworks</h3>
                     <p>Level 10 represents the pinnacle of secondary Spanish curriculum: analyzing canonical literature across major literary movements from the Middle Ages to the Latin American Boom.</p>
+
+                    <div class="diagram-box">
+                        <div class="diagram-title">Diagram: Timeline of Literary Eras in Spanish Curriculum</div>
+                        <div class="flow-row">
+                            <div class="flow-node">Medieval / Siglo de Oro</div>
+                            <div class="flow-node">Romanticismo / Gen. 98</div>
+                            <div class="flow-node">El Boom Latinoamericano</div>
+                        </div>
+                    </div>
                 `,
                 videoResources: [
                     { title: "AP Spanish Literature Exam Themes & Structure", creator: "AP Classroom", summary: "Overview of required texts, core themes, and essay rubrics." },
