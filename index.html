@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             --bg: #f8fafc;
             --card-bg: #ffffff;
         }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg);
@@ -24,13 +26,22 @@
             flex-direction: column;
             align-items: center;
         }
+
         header {
             text-align: center;
             margin-bottom: 30px;
         }
-        h1 { color: var(--primary); margin-bottom: 5px; }
-        p { color: #64748b; line-height: 1.5; }
-        
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        p {
+            color: #64748b;
+            line-height: 1.5;
+        }
+
         .main-container {
             width: 100%;
             max-width: 900px;
@@ -43,24 +54,35 @@
             gap: 15px;
             margin-bottom: 30px;
         }
+
         .level-card {
             background: var(--card-bg);
             padding: 18px 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-left: 5px solid var(--accent);
         }
+
         .level-card.locked {
             border-left-color: var(--locked);
             background: #f1f5f9;
             opacity: 0.75;
         }
-        .level-info h3 { margin: 0 0 5px 0; color: var(--primary); font-size: 1.1rem; }
-        .level-info p { margin: 0; font-size: 0.85rem; }
-        
+
+        .level-info h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .level-info p {
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
         .btn {
             background-color: var(--accent);
             color: white;
@@ -74,7 +96,11 @@
             display: inline-block;
             transition: background 0.2s;
         }
-        .btn:hover { background-color: #1d4ed8; }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+
         .level-card.locked .btn {
             background-color: var(--locked);
             cursor: not-allowed;
@@ -86,9 +112,10 @@
             background: var(--card-bg);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             width: 100%;
         }
+
         .curriculum-chapter {
             background: #f8fafc;
             border-left: 4px solid var(--accent);
@@ -97,9 +124,18 @@
             margin-bottom: 25px;
             line-height: 1.7;
         }
-        .curriculum-chapter h3 { color: var(--primary); margin-top: 0; }
-        .curriculum-chapter h4 { color: var(--accent); margin-top: 20px; margin-bottom: 8px; }
-        
+
+        .curriculum-chapter h3 {
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .curriculum-chapter h4 {
+            color: var(--accent);
+            margin-top: 20px;
+            margin-bottom: 8px;
+        }
+
         /* Graphical Elements & Diagrams inside Reading */
         .diagram-box {
             background: white;
@@ -109,6 +145,7 @@
             margin: 15px 0;
             text-align: center;
         }
+
         .diagram-title {
             font-weight: bold;
             color: var(--primary);
@@ -117,6 +154,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
         .flow-row {
             display: flex;
             justify-content: center;
@@ -124,6 +162,7 @@
             flex-wrap: wrap;
             margin: 10px 0;
         }
+
         .flow-node {
             background: #eff6ff;
             border: 1px solid #bfdbfe;
@@ -133,6 +172,7 @@
             font-weight: 600;
             color: #1e40af;
         }
+
         .bar-chart-container {
             display: flex;
             flex-direction: column;
@@ -143,17 +183,20 @@
             border: 1px solid #cbd5e1;
             border-radius: 8px;
         }
+
         .bar-row {
             display: flex;
             align-items: center;
             gap: 10px;
             font-size: 0.85rem;
         }
+
         .bar-label {
             width: 140px;
             text-align: right;
             font-weight: 600;
         }
+
         .bar-track {
             flex: 1;
             background: #f1f5f9;
@@ -162,6 +205,7 @@
             overflow: hidden;
             display: flex;
         }
+
         .bar-fill {
             background: var(--accent);
             height: 100%;
@@ -180,13 +224,18 @@
             margin: 15px 0;
             background: white;
         }
-        .curriculum-chapter th, .curriculum-chapter td {
+
+        .curriculum-chapter th,
+        .curriculum-chapter td {
             border: 1px solid #cbd5e1;
             padding: 8px 12px;
             text-align: left;
             font-size: 0.9rem;
         }
-        .curriculum-chapter th { background: #e2e8f0; }
+
+        .curriculum-chapter th {
+            background: #e2e8f0;
+        }
 
         .video-box {
             background: #eff6ff;
@@ -195,6 +244,7 @@
             border-radius: 8px;
             margin-bottom: 25px;
         }
+
         .video-item {
             background: white;
             padding: 12px 15px;
@@ -202,8 +252,216 @@
             margin-bottom: 10px;
             border-left: 3px solid var(--accent);
         }
-        .video-item h5 { margin: 0 0 4px 0; font-size: 0.95rem; color: var(--primary); }
-        .video-item p { margin: 0; font-size: 0.85rem; color: #475569; }
+
+        .video-item h5 {
+            margin: 0 0 4px 0;
+            font-size: 0.95rem;
+            color: var(--primary);
+        }
+
+        .video-item p {
+            margin: 0;
+            font-size: 0.85rem;
+            color: #475569;
+        }
+
+        .video-item a.video-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding: 6px 14px;
+            background: #2563eb;
+            color: white;
+            border-radius: 5px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .video-item a.video-link:hover {
+            background: #1d4ed8;
+        }
+
+        /* Extra Practice Section */
+        .practice-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
+        }
+
+        .practice-section h2 {
+            color: var(--primary);
+            margin: 0 0 6px 0;
+            font-size: 1.4rem;
+        }
+
+        .practice-section>p {
+            color: #64748b;
+            margin: 0 0 20px 0;
+            font-size: 0.9rem;
+        }
+
+        .practice-category {
+            margin-bottom: 24px;
+        }
+
+        .practice-category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 16px;
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            user-select: none;
+            transition: background 0.2s;
+        }
+
+        .practice-category-header:hover {
+            background: linear-gradient(135deg, #334155, #475569);
+        }
+
+        .practice-category-header h4 {
+            margin: 0;
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .practice-category-header .toggle-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .practice-category-header .toggle-icon.open {
+            transform: rotate(180deg);
+        }
+
+        .practice-category-body {
+            display: none;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            padding: 20px;
+        }
+
+        .practice-category-body.show {
+            display: block;
+        }
+
+        .practice-q-card {
+            background: white;
+            padding: 16px 18px;
+            border-radius: 8px;
+            margin-bottom: 14px;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .practice-q-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .practice-q-card p.practice-q-text {
+            font-weight: 600;
+            color: var(--primary);
+            margin: 0 0 10px 0;
+            font-size: 0.95rem;
+        }
+
+        .practice-options label {
+            display: block;
+            background: #f8fafc;
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: all 0.2s;
+        }
+
+        .practice-options label:hover {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+        }
+
+        .practice-feedback {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .practice-feedback.correct {
+            display: block;
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .practice-feedback.incorrect {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
+
+        .practice-check-btn {
+            margin-top: 10px;
+            padding: 7px 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .practice-check-btn:hover {
+            background: #1d4ed8;
+        }
+
+        .practice-score-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .practice-score-bar .score-label {
+            font-weight: 700;
+            color: #166534;
+            font-size: 1rem;
+        }
+
+        .practice-score-bar .score-track {
+            flex: 1;
+            height: 12px;
+            background: #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .practice-score-bar .score-fill {
+            height: 100%;
+            background: var(--success);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+        }
 
         /* Gating Checklist */
         .gate-box {
@@ -213,6 +471,7 @@
             border-radius: 8px;
             margin-bottom: 25px;
         }
+
         .gate-box label {
             display: block;
             margin-bottom: 8px;
@@ -227,6 +486,7 @@
             border-top: 2px solid #e2e8f0;
             padding-top: 25px;
         }
+
         .quiz-question-card {
             background: #f8fafc;
             padding: 20px;
@@ -234,6 +494,7 @@
             margin-bottom: 20px;
             border: 1px solid #e2e8f0;
         }
+
         .quiz-options label {
             display: block;
             background: white;
@@ -244,7 +505,11 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        .quiz-options label:hover { background: #f1f5f9; }
+
+        .quiz-options label:hover {
+            background: #f1f5f9;
+        }
+
         .explanation {
             display: none;
             margin-top: 10px;
@@ -253,23 +518,39 @@
             font-size: 0.9rem;
             line-height: 1.5;
         }
-        .explanation.correct { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
-        .explanation.incorrect { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+        .explanation.correct {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .explanation.incorrect {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+        }
 
         /* Dictionary Widget */
         .dictionary-box {
             background: var(--card-bg);
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             margin-top: 20px;
         }
-        .dictionary-box h3 { margin-top: 0; color: var(--primary); }
+
+        .dictionary-box h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
         .dict-search-area {
             display: flex;
             gap: 10px;
             margin-bottom: 12px;
         }
+
         .dict-search-area input {
             flex: 1;
             padding: 8px 12px;
@@ -277,16 +558,24 @@
             border-radius: 6px;
             font-size: 0.95rem;
         }
+
         #dict-result {
             font-weight: 500;
             color: var(--success);
             min-height: 24px;
         }
 
-        .back-btn { background: #64748b; margin-bottom: 15px; }
-        .back-btn:hover { background: #475569; }
+        .back-btn {
+            background: #64748b;
+            margin-bottom: 15px;
+        }
+
+        .back-btn:hover {
+            background: #475569;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -303,12 +592,38 @@
             <!-- Mini Dictionary -->
             <div class="dictionary-box">
                 <h3>Quick Spanish-English Dictionary</h3>
-                <p style="font-size: 0.85rem; margin-bottom: 10px;">Type a common Spanish word to look up its meaning:</p>
+                <p style="font-size: 0.85rem; margin-bottom: 10px;">Type a common Spanish word to look up its meaning:
+                </p>
                 <div class="dict-search-area">
-                    <input type="text" id="dict-input" placeholder="e.g., Hola, Gracias, Gato..." onkeypress="handleDictEnter(event)">
+                    <input type="text" id="dict-input" placeholder="e.g., Hola, Gracias, Gato..."
+                        onkeypress="handleDictEnter(event)">
                     <button class="btn" onclick="lookupWord()">Search</button>
                 </div>
                 <div id="dict-result"></div>
+            </div>
+
+            <!-- EXTRA PRACTICE QUESTIONS SECTION (SEPARATE FROM LESSONS) -->
+            <div class="practice-section" id="practice-section">
+                <div
+                    style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <h2>🎯 Extra Practice & Self-Assessment Center</h2>
+                        <p>Comprehensive drills organized by skill topic. Practice anytime without affecting your lesson
+                            progress.</p>
+                    </div>
+                    <button class="btn" style="background: #475569;" onclick="resetPracticeDrills()">Reset
+                        Practice</button>
+                </div>
+
+                <!-- Practice Progress & Score Indicator -->
+                <div class="practice-score-bar">
+                    <span class="score-label" id="practice-score-text">Practice Score: 0 / 0 (0%)</span>
+                    <div class="score-track">
+                        <div class="score-fill" id="practice-score-fill" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 20px;" id="practice-categories-container"></div>
             </div>
         </div>
 
@@ -323,7 +638,8 @@
             <!-- Recommended Video Resources Box -->
             <div class="video-box">
                 <h3>🎥 VIDEO RESOURCES</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 15px;">Search for these recommended video lessons on YouTube to supplement your reading with native pronunciation and expert teacher explanations:</p>
+                <p style="font-size: 0.9rem; margin-bottom: 15px;">Click any video below to watch expert lessons and
+                    native pronunciation guides directly on YouTube:</p>
                 <div id="video-list-container"></div>
             </div>
 
@@ -331,17 +647,22 @@
             <div class="gate-box">
                 <p style="margin: 0 0 10px 0; font-weight: 600; color: #166534;">Prerequisite Verification:</p>
                 <label>
-                    <input type="checkbox" id="read-check" onchange="checkPrerequisites()"> I confirm I have thoroughly read the entire textbook chapter, reviewed the visual diagrams, and checked the video topics.
+                    <input type="checkbox" id="read-check" onchange="checkPrerequisites()"> I confirm I have thoroughly
+                    read the entire textbook chapter, reviewed the visual diagrams, and checked the video topics.
                 </label>
-                <button class="btn" id="unlock-quiz-btn" style="margin-top: 10px;" disabled onclick="revealQuiz()">Proceed to 50-Question Assessment</button>
+                <button class="btn" id="unlock-quiz-btn" style="margin-top: 10px;" disabled
+                    onclick="revealQuiz()">Proceed to 50-Question Assessment</button>
             </div>
 
             <!-- Quiz Section -->
             <div id="quiz-section">
                 <h3>📝 Comprehensive Assessment (50 Questions)</h3>
-                <p style="font-size: 0.85rem; margin-bottom: 20px;">Answer all 50 questions based on the textbook chapter and study materials. Explanations will appear upon submission.</p>
+                <p style="font-size: 0.85rem; margin-bottom: 20px;">Answer all 50 questions based on the textbook
+                    chapter and study materials. Explanations will appear upon submission.</p>
                 <div id="quiz-questions-container"></div>
-                <button class="btn" onclick="submitAssessment()" style="background-color: var(--success); font-size: 1rem; padding: 12px 24px;">Submit Assessment</button>
+                <button class="btn" onclick="submitAssessment()"
+                    style="background-color: var(--success); font-size: 1rem; padding: 12px 24px;">Submit
+                    Assessment</button>
                 <p id="assessment-feedback" style="font-weight: bold; margin-top: 15px; font-size: 1.1rem;"></p>
             </div>
         </div>
@@ -388,9 +709,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "THE SPANISH ALPHABET - Letters and Their Sounds", creator: "Butterfly Spanish", summary: "Detailed breakdown of all 27 Spanish letters and exact vowel pronunciation guides." },
-                    { title: "Learn Spanish for Beginners: Basic Spanish Phrases", creator: "The Spanish Dude", summary: "Clear tutorial explaining greetings, introductions, and courtesy vocabulary." },
-                    { title: "Basic Spanish Conversations for Beginners", creator: "Easy Spanish", summary: "Real-world street interviews demonstrating how native speakers use greetings." }
+                    { title: "THE SPANISH ALPHABET - Letters and Their Sounds", creator: "Butterfly Spanish", summary: "Detailed breakdown of all 27 Spanish letters and exact vowel pronunciation guides.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+Spanish+Alphabet+Letters+Sounds" },
+                    { title: "Learn Spanish for Beginners: Basic Spanish Phrases", creator: "The Spanish Dude", summary: "Clear tutorial explaining greetings, introductions, and courtesy vocabulary.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+basic+Spanish+phrases+beginners" },
+                    { title: "Basic Spanish Conversations for Beginners", creator: "Easy Spanish", summary: "Real-world street interviews demonstrating how native speakers use greetings.", link: "https://www.youtube.com/results?search_query=Easy+Spanish+basic+conversations+beginners+greetings" }
                 ],
                 questions: [
                     { q: "1. How many primary invariant vowel sounds exist in Spanish?", options: ["Five", "Twelve", "Seven", "Twenty-seven"], answer: 0, correctExplanation: "Correct! Spanish has five pure vowel sounds (A, E, I, O, U).", incorrectExplanation: "Incorrect. There are five invariant vowels." },
@@ -484,9 +805,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Subject Pronouns in Spanish Explained", creator: "The Spanish Dude", summary: "Breaks down singular vs plural, formal vs informal usage." },
-                    { title: "Learn Spanish Verbs: Present Tense -AR, -ER, -IR", creator: "Butterfly Spanish", summary: "Step-by-step conjugation guide with practical sentence building." },
-                    { title: "Spanish Conjugation Regular Verbs Practice", creator: "Señor Jordan", summary: "Catchy video lesson reinforcing present tense verb endings." }
+                    { title: "Subject Pronouns in Spanish Explained", creator: "The Spanish Dude", summary: "Breaks down singular vs plural, formal vs informal usage.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+subject+pronouns+Spanish+explained" },
+                    { title: "Learn Spanish Verbs: Present Tense -AR, -ER, -IR", creator: "Butterfly Spanish", summary: "Step-by-step conjugation guide with practical sentence building.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+present+tense+AR+ER+IR+verbs" },
+                    { title: "Spanish Conjugation Regular Verbs Practice", creator: "Señor Jordan", summary: "Catchy video lesson reinforcing present tense verb endings.", link: "https://www.youtube.com/results?search_query=Senor+Jordan+Spanish+regular+verb+conjugation+present+tense" }
                 ],
                 questions: [
                     { q: "1. Which pronoun represents 'I' in Spanish?", options: ["Tú", "Yo", "Él", "Nosotros"], answer: 1, correctExplanation: "Correct! 'Yo' means I.", incorrectExplanation: "Incorrect. Tú means you." },
@@ -574,9 +895,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Ser vs Estar: When to use 'To Be' in Spanish", creator: "Butterfly Spanish", summary: "Comprehensive explanation of DOCTOR and PLACE rules." },
-                    { title: "Ser vs Estar Hacks & Tricks", creator: "The Spanish Dude", summary: "Simplified mental shortcuts for deciding between Ser and Estar." },
-                    { title: "Adjective Gender and Plural Agreement", creator: "SpanishPod101", summary: "Guide to making adjectives match nouns in gender and number." }
+                    { title: "Ser vs Estar: When to use 'To Be' in Spanish", creator: "Butterfly Spanish", summary: "Comprehensive explanation of DOCTOR and PLACE rules.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+ser+vs+estar+when+to+use" },
+                    { title: "Ser vs Estar Hacks & Tricks", creator: "The Spanish Dude", summary: "Simplified mental shortcuts for deciding between Ser and Estar.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+ser+vs+estar+hacks+tricks" },
+                    { title: "Adjective Gender and Plural Agreement", creator: "SpanishPod101", summary: "Guide to making adjectives match nouns in gender and number.", link: "https://www.youtube.com/results?search_query=SpanishPod101+adjective+gender+plural+agreement" }
                 ],
                 questions: [
                     { q: "1. Which verb is used for permanent characteristics and identity?", options: ["Estar", "Ser", "Tener", "Hacer"], answer: 1, correctExplanation: "Correct! Ser is used for permanent traits.", incorrectExplanation: "Incorrect. Estar is for temporary states." },
@@ -666,9 +987,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Stem Changing Verbs in Present Tense (Boot Verbs)", creator: "Señor Jordan", summary: "Visual breakdown of the boot shape concept." },
-                    { title: "Direct and Indirect Object Pronouns Explained", creator: "The Spanish Dude", summary: "Simplifies object pronoun positioning." },
-                    { title: "How to Use the Verb GUSTAR in Spanish", creator: "Butterfly Spanish", summary: "Explains backward verb structures like gustar." }
+                    { title: "Stem Changing Verbs in Present Tense (Boot Verbs)", creator: "Señor Jordan", summary: "Visual breakdown of the boot shape concept.", link: "https://www.youtube.com/results?search_query=Senor+Jordan+stem+changing+boot+verbs+present+tense" },
+                    { title: "Direct and Indirect Object Pronouns Explained", creator: "The Spanish Dude", summary: "Simplifies object pronoun positioning.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+direct+indirect+object+pronouns" },
+                    { title: "How to Use the Verb GUSTAR in Spanish", creator: "Butterfly Spanish", summary: "Explains backward verb structures like gustar.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+how+to+use+gustar+Spanish" }
                 ],
                 questions: [
                     { q: "1. What vowel change occurs in the verb 'querer' (e->ie)?", options: ["quiro", "quiero", "quiere", "queremos"], answer: 1, correctExplanation: "Correct! 'Quiero' exhibits the e->ie stem change.", incorrectExplanation: "Incorrect. Queremos skips the boot change." },
@@ -752,9 +1073,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Preterite vs Imperfect: The Ultimate Guide", creator: "Butterfly Spanish", summary: "Clear breakdown with contrast examples." },
-                    { title: "Preterite vs. Imperfect Rule of Thumb", creator: "The Spanish Dude", summary: "Easy memory tricks for past tenses." },
-                    { title: "Irregular Preterite Verbs Song & Explanation", creator: "Señor Jordan", summary: "Memorable mnemonic song covering irregular preterite stems." }
+                    { title: "Preterite vs Imperfect: The Ultimate Guide", creator: "Butterfly Spanish", summary: "Clear breakdown with contrast examples.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+preterite+vs+imperfect+ultimate+guide" },
+                    { title: "Preterite vs. Imperfect Rule of Thumb", creator: "The Spanish Dude", summary: "Easy memory tricks for past tenses.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+preterite+imperfect+rule+of+thumb" },
+                    { title: "Irregular Preterite Verbs Song & Explanation", creator: "Señor Jordan", summary: "Memorable mnemonic song covering irregular preterite stems.", link: "https://www.youtube.com/results?search_query=Senor+Jordan+irregular+preterite+verbs+song" }
                 ],
                 questions: [
                     { q: "1. Which past tense is used for single, completed actions with defined endpoints?", options: ["Imperfect", "Preterite", "Present", "Future"], answer: 1, correctExplanation: "Correct! Preterite handles completed, bounded actions.", incorrectExplanation: "Incorrect. Imperfect is for ongoing or habitual actions." },
@@ -840,9 +1161,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Reflexive Verbs in Spanish Guide", creator: "Butterfly Spanish", summary: "Comprehensive lesson on daily routine verbs and reflexive pronoun positions." },
-                    { title: "Informal Tú Commands Affirmative & Negative", creator: "The Spanish Dude", summary: "Covers standard command formation and shortcuts for irregulars." },
-                    { title: "Formal Commands (Usted and Ustedes)", creator: "Señor Jordan", summary: "Clear rules for forming formal polite commands." }
+                    { title: "Reflexive Verbs in Spanish Guide", creator: "Butterfly Spanish", summary: "Comprehensive lesson on daily routine verbs and reflexive pronoun positions.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+reflexive+verbs+guide" },
+                    { title: "Informal Tú Commands Affirmative & Negative", creator: "The Spanish Dude", summary: "Covers standard command formation and shortcuts for irregulars.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+informal+tu+commands+affirmative+negative" },
+                    { title: "Formal Commands (Usted and Ustedes)", creator: "Señor Jordan", summary: "Clear rules for forming formal polite commands.", link: "https://www.youtube.com/results?search_query=Senor+Jordan+formal+commands+usted+ustedes+Spanish" }
                 ],
                 questions: [
                     { q: "1. What is the reflexive pronoun for 'Yo'?", options: ["te", "me", "se", "nos"], answer: 1, correctExplanation: "Correct! First-person singular reflexive pronoun is 'me'.", incorrectExplanation: "Incorrect. Te is for tú." },
@@ -930,9 +1251,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Understanding the Subjunctive Mood in Spanish", creator: "Butterfly Spanish", summary: "In-depth guide explaining indicative vs subjunctive mindsets." },
-                    { title: "Subjunctive Conjugation Trick in 3 Steps", creator: "The Spanish Dude", summary: "Fast method for deriving subjunctive verb stems." },
-                    { title: "Subjunctive vs Indicative Real Life Contexts", creator: "Easy Spanish", summary: "Interviews showing native speakers switching between moods." }
+                    { title: "Understanding the Subjunctive Mood in Spanish", creator: "Butterfly Spanish", summary: "In-depth guide explaining indicative vs subjunctive mindsets.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+subjunctive+mood+explained" },
+                    { title: "Subjunctive Conjugation Trick in 3 Steps", creator: "The Spanish Dude", summary: "Fast method for deriving subjunctive verb stems.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+subjunctive+conjugation+trick+3+steps" },
+                    { title: "Subjunctive vs Indicative Real Life Contexts", creator: "Easy Spanish", summary: "Interviews showing native speakers switching between moods.", link: "https://www.youtube.com/results?search_query=Easy+Spanish+subjunctive+vs+indicative+real+life" }
                 ],
                 questions: [
                     { q: "1. What core concept does the Subjunctive mood express compared to the Indicative mood?", options: ["Objective facts and absolute certainty", "Subjectivity, doubt, emotion, and hypothetical desires", "Completed actions in the deep past", "Commands only"], answer: 1, correctExplanation: "Correct! Subjunctive expresses doubt, emotion, and non-fact reality.", incorrectExplanation: "Incorrect. Objective facts use the indicative mood." },
@@ -1017,9 +1338,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Simple Future and Conditional Tenses", creator: "Butterfly Spanish", summary: "Covers future certainty and conditional hypotheticals." },
-                    { title: "The Present Perfect Tense in Spanish", creator: "The Spanish Dude", summary: "Guide to conjugating haber and past participles." },
-                    { title: "Compound Tenses Masterclass", creator: "SpanishPod101", summary: "Covers past perfect, future perfect, and conditional perfect." }
+                    { title: "Simple Future and Conditional Tenses", creator: "Butterfly Spanish", summary: "Covers future certainty and conditional hypotheticals.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+future+conditional+tense+Spanish" },
+                    { title: "The Present Perfect Tense in Spanish", creator: "The Spanish Dude", summary: "Guide to conjugating haber and past participles.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+present+perfect+tense+haber+past+participle" },
+                    { title: "Compound Tenses Masterclass", creator: "SpanishPod101", summary: "Covers past perfect, future perfect, and conditional perfect.", link: "https://www.youtube.com/results?search_query=SpanishPod101+compound+tenses+past+perfect+future+perfect" }
                 ],
                 questions: [
                     { q: "1. How do you form the regular Future simple tense in Spanish?", options: ["Add future endings directly to the full infinitive verb", "Add endings to the preterite stem", "Use 'ir a' plus subjunctive", "Drop infinitive ending and add -aba"], answer: 0, correctExplanation: "Correct! Future endings attach directly to the end of the full infinitive.", incorrectExplanation: "Incorrect. Infinitive remains intact." },
@@ -1104,9 +1425,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "Imperfect Subjunctive and Si Clauses", creator: "Butterfly Spanish", summary: "Imperfect subjunctive derivation from preterite stems." },
-                    { title: "AP Spanish Language Exam Strategies", creator: "AP Classroom", summary: "Official guide on structuring formal argumentative essays." },
-                    { title: "Advanced Spanish Si Clauses Masterclass", creator: "The Spanish Dude", summary: "Breaking down contrary-to-fact conditional sentences." }
+                    { title: "Imperfect Subjunctive and Si Clauses", creator: "Butterfly Spanish", summary: "Imperfect subjunctive derivation from preterite stems.", link: "https://www.youtube.com/results?search_query=Butterfly+Spanish+imperfect+subjunctive+si+clauses" },
+                    { title: "AP Spanish Language Exam Strategies", creator: "AP Classroom", summary: "Official guide on structuring formal argumentative essays.", link: "https://www.youtube.com/results?search_query=AP+Spanish+Language+exam+strategies+argumentative+essay" },
+                    { title: "Advanced Spanish Si Clauses Masterclass", creator: "The Spanish Dude", summary: "Breaking down contrary-to-fact conditional sentences.", link: "https://www.youtube.com/results?search_query=The+Spanish+Dude+advanced+si+clauses+contrary+to+fact" }
                 ],
                 questions: [
                     { q: "1. From which specific preterite form is the stem for the Imperfect Subjunctive derived?", options: ["Yo form", "Tú form", "Ellos/Ellas preterite form (dropping -ron)", "Nosotros form"], answer: 2, correctExplanation: "Correct! Take the third-person plural preterite form (e.g., hablaron), drop -ron, and add past subjunctive endings.", incorrectExplanation: "Incorrect. Present subjunctive uses yo form." },
@@ -1191,9 +1512,9 @@
                     </div>
                 `,
                 videoResources: [
-                    { title: "AP Spanish Literature Exam Themes & Structure", creator: "AP Classroom", summary: "Overview of required texts, core themes, and essay rubrics." },
-                    { title: "El Boom Latinoamericano y Realismo Mágico", creator: "ArteHistoria", summary: "Documentary exploring Márquez, Borges, and 20th-century prose." },
-                    { title: "Analyzing Spanish Poetry & Rhetorical Figures", creator: "Aprende con Profe", summary: "Tutorial on identifying versification, meter, and literary devices." }
+                    { title: "AP Spanish Literature Exam Themes & Structure", creator: "AP Classroom", summary: "Overview of required texts, core themes, and essay rubrics.", link: "https://www.youtube.com/results?search_query=AP+Spanish+Literature+exam+themes+structure+rubric" },
+                    { title: "El Boom Latinoamericano y Realismo Mágico", creator: "ArteHistoria", summary: "Documentary exploring Márquez, Borges, and 20th-century prose.", link: "https://www.youtube.com/results?search_query=El+Boom+Latinoamericano+realismo+magico+documental" },
+                    { title: "Analyzing Spanish Poetry & Rhetorical Figures", creator: "Aprende con Profe", summary: "Tutorial on identifying versification, meter, and literary devices.", link: "https://www.youtube.com/results?search_query=analisis+poesia+figuras+retoricas+espanol" }
                 ],
                 questions: [
                     { q: "1. What is the primary focus when studying texts in AP Spanish Literature?", options: ["Memorizing basic vocabulary lists", "Analyzing literary devices, historical context, and thematic evolution", "Practicing basic pronunciation phonetics", "Translating words verbatim into English"], answer: 1, correctExplanation: "Correct! AP Literature centers on critical textual analysis, stylistic devices, and thematic evaluation.", incorrectExplanation: "Incorrect. Basic grammar and vocabulary belong to early language acquisition levels." },
@@ -1298,7 +1619,7 @@
                         isLocked = false;
                     }
                 }
-                
+
                 const isCompleted = completedLevels.includes(level.id);
 
                 const card = document.createElement('div');
@@ -1335,6 +1656,7 @@
                 item.innerHTML = `
                     <h5>🎬 Title: "${v.title}"</h5>
                     <p><strong>Created by:</strong> ${v.creator} | <strong>Summary:</strong> ${v.summary}</p>
+                    <a class="video-link" href="${v.link}" target="_blank" rel="noopener noreferrer">▶ Watch on YouTube ↗</a>
                 `;
                 videoListContainer.appendChild(item);
             });
@@ -1351,7 +1673,7 @@
             level.questions.forEach((qObj, qIndex) => {
                 const qCard = document.createElement('div');
                 qCard.className = 'quiz-question-card';
-                
+
                 let optionsHtml = '';
                 qObj.options.forEach((opt, oIndex) => {
                     optionsHtml += `
@@ -1442,7 +1764,7 @@
         function lookupWord() {
             const input = document.getElementById('dict-input').value.trim().toLowerCase();
             const resultBox = document.getElementById('dict-result');
-            
+
             if (!input) {
                 resultBox.style.color = "var(--error)";
                 resultBox.textContent = "Please enter a word to search.";
@@ -1464,7 +1786,298 @@
             }
         }
 
+        // Extra Practice Questions Dataset
+        const extraPracticeData = [
+            {
+                category: "Module 1: Foundations & Vocabulary Essentials",
+                id: "module-1",
+                questions: [
+                    {
+                        id: "p1_1",
+                        q: "1. Which definite article correctly precedes the feminine singular noun 'manzana' (apple)?",
+                        options: ["El", "La", "Los", "Las"],
+                        answer: 1,
+                        explanation: "'Manzana' is feminine singular, requiring the definite article 'La'."
+                    },
+                    {
+                        id: "p1_2",
+                        q: "2. How is the letter 'H' pronounced in the word 'hospital' in standard Spanish?",
+                        options: ["Pronounced like English 'H'", "Always completely silent", "Pronounced like a rolled 'R'", "Pronounced like a soft 'B'"],
+                        answer: 1,
+                        explanation: "In standard Spanish, the letter 'H' is always silent unless paired with 'C' ('ch')."
+                    },
+                    {
+                        id: "p1_3",
+                        q: "3. What is the appropriate formal greeting when greeting an elder or supervisor at 3:00 PM?",
+                        options: ["Buenos días", "Buenas tardes", "Buenas noches", "¿Qué onda?"],
+                        answer: 1,
+                        explanation: "'Buenas tardes' is used from noon until nightfall / sunset."
+                    },
+                    {
+                        id: "p1_4",
+                        q: "4. What is the number 'cuarenta y cinco' in numerals?",
+                        options: ["35", "45", "54", "405"],
+                        answer: 1,
+                        explanation: "'Cuarenta y cinco' equals 45."
+                    }
+                ]
+            },
+            {
+                category: "Module 2: Present Tense Verbs & Stem Changers",
+                id: "module-2",
+                questions: [
+                    {
+                        id: "p2_1",
+                        q: "1. Conjugate 'aprender' (to learn) for 'nosotros':",
+                        options: ["aprendemos", "aprendéis", "aprenden", "aprendo"],
+                        answer: 0,
+                        explanation: "Regular -ER verbs take '-emos' in the nosotros form."
+                    },
+                    {
+                        id: "p2_2",
+                        q: "2. What is the 'yo' form of the e -> ie stem-changing verb 'preferir' (to prefer)?",
+                        options: ["prefero", "prefiero", "prefiere", "preferimos"],
+                        answer: 1,
+                        explanation: "'Preferir' changes 'e' to 'ie' in the present tense boot, producing 'prefiero'."
+                    },
+                    {
+                        id: "p2_3",
+                        q: "3. How do you correctly say 'I like books' in Spanish?",
+                        options: ["Yo gusto los libros", "Me gusta los libros", "Me gustan los libros", "A mí gusto libros"],
+                        answer: 2,
+                        explanation: "'Los libros' is plural, so 'gustar' conjugates to 'gustan' with indirect object pronoun 'me'."
+                    },
+                    {
+                        id: "p2_4",
+                        q: "4. Where should direct object pronoun 'lo' be placed with a single conjugated verb: 'Yo _____ veo'?",
+                        options: ["After the verb attached: 'Yo veolo'", "Before the conjugated verb: 'Yo lo veo'", "At the end of the sentence only", "Pronouns are never used with 'ver'"],
+                        answer: 1,
+                        explanation: "With a single conjugated verb, object pronouns precede the conjugated verb ('Yo lo veo')."
+                    }
+                ]
+            },
+            {
+                category: "Module 3: Ser vs. Estar & Adjectives",
+                id: "module-3",
+                questions: [
+                    {
+                        id: "p3_1",
+                        q: "1. Choose the correct verb: 'Carlos _____ profesor de matemáticas.'",
+                        options: ["está", "es", "tiene", "hace"],
+                        answer: 1,
+                        explanation: "Professions express identity and inherent characteristics, requiring 'ser' (es)."
+                    },
+                    {
+                        id: "p3_2",
+                        q: "2. Choose the correct verb: 'Los estudiantes _____ cansados hoy después del examen.'",
+                        options: ["son", "están", "tienen", "hacen"],
+                        answer: 1,
+                        explanation: "Tiredness is a temporary physical/emotional condition, requiring 'estar' (están)."
+                    },
+                    {
+                        id: "p3_3",
+                        q: "3. Make the adjective match: 'Las casas son muy _____ (antiguo).'",
+                        options: ["antiguo", "antigua", "antiguos", "antiguas"],
+                        answer: 3,
+                        explanation: "'Las casas' is feminine plural, requiring 'antiguas'."
+                    },
+                    {
+                        id: "p3_4",
+                        q: "4. What does 'El niño está aburrido' mean?",
+                        options: ["The boy is a boring person by nature", "The boy is currently bored", "The boy is very intelligent", "The boy is ready to leave"],
+                        answer: 1,
+                        explanation: "'Estar aburrido' expresses the temporary state of feeling bored right now."
+                    }
+                ]
+            },
+            {
+                category: "Module 4: Preterite vs. Imperfect & Reflexive Verbs",
+                id: "module-4",
+                questions: [
+                    {
+                        id: "p4_1",
+                        q: "1. Which past tense is used for an interrupted ongoing action ('I was walking when it rained')?",
+                        options: ["Preterite for ongoing, Imperfect for interruption", "Imperfect for ongoing (caminaba), Preterite for interruption (llovió)", "Future for both", "Present subjunctive for both"],
+                        answer: 1,
+                        explanation: "The imperfect sets the background action, while the preterite marks the specific completed event that interrupts it."
+                    },
+                    {
+                        id: "p4_2",
+                        q: "2. What is the preterite form of 'tener' for 'yo'?",
+                        options: ["tuve", "tenía", "tengo", "tuviste"],
+                        answer: 0,
+                        explanation: "'Tener' is irregular in the preterite with stem 'tuv-' -> 'tuve'."
+                    },
+                    {
+                        id: "p4_3",
+                        q: "3. Choose the correct reflexive form: 'Todos los días yo _____ a las siete.' (despertarse)",
+                        options: ["despierto", "me despierto", "se despierta", "nos despertamos"],
+                        answer: 1,
+                        explanation: "'Despertarse' is reflexive; for 'yo' it requires 'me' + e->ie boot shift ('me despierto')."
+                    },
+                    {
+                        id: "p4_4",
+                        q: "4. What is the affirmative informal (tú) command for 'poner'?",
+                        options: ["pone", "pon", "ponga", "pongas"],
+                        answer: 1,
+                        explanation: "'Poner' has an irregular affirmative informal command: '¡Pon!'."
+                    }
+                ]
+            },
+            {
+                category: "Module 5: Subjunctive Mood & Advanced Spanish",
+                id: "module-5",
+                questions: [
+                    {
+                        id: "p5_1",
+                        q: "1. Complete the sentence: 'Dudo que ellos _____ la respuesta.' (saber)",
+                        options: ["saben", "sepan", "supieron", "sabrán"],
+                        answer: 1,
+                        explanation: "Doubt ('Dudo que') triggers the present subjunctive form of saber: 'sepan'."
+                    },
+                    {
+                        id: "p5_2",
+                        q: "2. In contrary-to-fact 'si' clauses, what tense follows 'Si tuviera dinero...'?",
+                        options: ["Present indicative ('compro')", "Future ('compraré')", "Conditional ('compraría')", "Imperfect indicative ('compraba')"],
+                        answer: 2,
+                        explanation: "'Si' + imperfect subjunctive pairs with the conditional tense in the result clause."
+                    },
+                    {
+                        id: "p5_3",
+                        q: "3. What is the past participle of the irregular verb 'escribir'?",
+                        options: ["escribido", "escrito", "escribado", "escribiente"],
+                        answer: 1,
+                        explanation: "The irregular past participle of 'escribir' is 'escrito'."
+                    },
+                    {
+                        id: "p5_4",
+                        q: "4. In rhetorical literary analysis, what is 'hipérbaton'?",
+                        options: ["Direct comparison using 'como'", "Inversion or alteration of customary syntactical word order", "Repetition of words at line beginnings", "Extreme understatement"],
+                        answer: 1,
+                        explanation: "'Hipérbaton' is the intentional inversion of normal syntactic word order for artistic or poetic emphasis."
+                    }
+                ]
+            }
+        ];
+
+        // Practice State Tracker
+        let practiceAnswers = {};
+
+        function renderPracticeSection() {
+            const container = document.getElementById('practice-categories-container');
+            if (!container) return;
+            container.innerHTML = "";
+
+            let totalQuestions = 0;
+            let answeredQuestions = 0;
+            let correctAnswers = 0;
+
+            extraPracticeData.forEach((cat, catIdx) => {
+                totalQuestions += cat.questions.length;
+
+                const catDiv = document.createElement('div');
+                catDiv.className = 'practice-category';
+
+                const header = document.createElement('div');
+                header.className = 'practice-category-header';
+                // First module open by default
+                const isInitiallyOpen = catIdx === 0;
+                header.innerHTML = `
+                    <h4>📁 ${cat.category} (${cat.questions.length} Questions)</h4>
+                    <span class="toggle-icon ${isInitiallyOpen ? 'open' : ''}" id="icon-${cat.id}">▼</span>
+                `;
+
+                const body = document.createElement('div');
+                body.className = `practice-category-body ${isInitiallyOpen ? 'show' : ''}`;
+                body.id = `body-${cat.id}`;
+
+                cat.questions.forEach((qObj) => {
+                    const qCard = document.createElement('div');
+                    qCard.className = 'practice-q-card';
+
+                    const userAns = practiceAnswers[qObj.id];
+                    let optionsHtml = '';
+
+                    qObj.options.forEach((opt, optIdx) => {
+                        const isChecked = userAns !== undefined && userAns.selected === optIdx;
+                        optionsHtml += `
+                            <label>
+                                <input type="radio" name="practice_${qObj.id}" value="${optIdx}" ${isChecked ? 'checked' : ''} onchange="selectPracticeAnswer('${qObj.id}', ${optIdx})">
+                                ${opt}
+                            </label>
+                        `;
+                    });
+
+                    let feedbackHtml = '';
+                    if (userAns !== undefined) {
+                        answeredQuestions++;
+                        if (userAns.isCorrect) {
+                            correctAnswers++;
+                            feedbackHtml = `<div class="practice-feedback correct">✅ <strong>Correct!</strong> ${qObj.explanation}</div>`;
+                        } else {
+                            feedbackHtml = `<div class="practice-feedback incorrect">❌ <strong>Incorrect.</strong> ${qObj.explanation}</div>`;
+                        }
+                    }
+
+                    qCard.innerHTML = `
+                        <p class="practice-q-text">${qObj.q}</p>
+                        <div class="practice-options">${optionsHtml}</div>
+                        ${feedbackHtml}
+                    `;
+                    body.appendChild(qCard);
+                });
+
+                header.onclick = () => {
+                    const isVisible = body.classList.contains('show');
+                    body.classList.toggle('show', !isVisible);
+                    const icon = document.getElementById(`icon-${cat.id}`);
+                    if (icon) icon.classList.toggle('open', !isVisible);
+                };
+
+                catDiv.appendChild(header);
+                catDiv.appendChild(body);
+                container.appendChild(catDiv);
+            });
+
+            // Update Progress Bar
+            const scoreText = document.getElementById('practice-score-text');
+            const scoreFill = document.getElementById('practice-score-fill');
+            if (scoreText && scoreFill) {
+                const percent = totalQuestions > 0 ? Math.round((correctAnswers / totalQuestions) * 100) : 0;
+                scoreText.textContent = `Practice Score: ${correctAnswers} / ${totalQuestions} Correct (${percent}%) | Answered: ${answeredQuestions}/${totalQuestions}`;
+                scoreFill.style.width = `${percent}%`;
+            }
+        }
+
+        function selectPracticeAnswer(qId, selectedIdx) {
+            let foundQuestion = null;
+            for (const cat of extraPracticeData) {
+                const q = cat.questions.find(item => item.id === qId);
+                if (q) {
+                    foundQuestion = q;
+                    break;
+                }
+            }
+            if (!foundQuestion) return;
+
+            practiceAnswers[qId] = {
+                selected: selectedIdx,
+                isCorrect: foundQuestion.answer === selectedIdx
+            };
+
+            renderPracticeSection();
+        }
+
+        function resetPracticeDrills() {
+            if (confirm("Reset all extra practice answers?")) {
+                practiceAnswers = {};
+                renderPracticeSection();
+            }
+        }
+
         renderDashboard();
+        renderPracticeSection();
     </script>
 </body>
+
 </html>
